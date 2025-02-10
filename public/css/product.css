@@ -1,0 +1,262 @@
+.view-produk-child {
+  	position: absolute;
+  	top: -223px;
+  	left: -356px;
+  	filter: blur(500px);
+  	border-radius: 50%;
+  	background-color: #ff5722;
+  	width: 500px;
+  	height: 500px;
+  	opacity: 0.5;
+}
+.view-produk-item {
+  	position: absolute;
+  	top: 847px;
+  	left: 1351px;
+  	filter: blur(500px);
+  	border-radius: 50%;
+  	background-color: #facd49;
+  	width: 500px;
+  	height: 500px;
+  	opacity: 0.5;
+}
+.objects-icon {
+  	position: absolute;
+  	top: 898.75px;
+  	left: 38px;
+  	width: 65px;
+  	height: 169.9px;
+  	overflow: hidden;
+  	object-fit: contain;
+  	display: none;
+}
+.objects-icon1 {
+  	position: absolute;
+  	top: 1879px;
+  	left: 1300px;
+  	width: 107px;
+  	height: 106.5px;
+  	overflow: hidden;
+  	display: none;
+}
+.vector-icon {
+  	width: 40px;
+  	position: relative;
+  	height: 40px;
+}
+.pc-shop {
+  	position: relative;
+  	line-height: 40px;
+  	font-weight: 900;
+}
+.vector-parent {
+  	display: flex;
+  	flex-direction: row;
+  	align-items: center;
+  	justify-content: flex-start;
+  	gap: 16px;
+}
+.home {
+  	position: relative;
+  	line-height: 120%;
+  	cursor: pointer;
+}
+.product {
+  	position: relative;
+  	line-height: 120%;
+  	color: #222831;
+}
+.service {
+  	position: relative;
+  	line-height: 120%;
+}
+.home-parent {
+  	display: flex;
+  	flex-direction: row;
+  	align-items: flex-start;
+  	justify-content: flex-start;
+  	gap: 64px;
+  	font-size: 20px;
+  	color: rgba(25, 24, 37, 0.5);
+    font-weight: bold;
+}
+.frame-parent {
+  	align-self: stretch;
+  	display: flex;
+  	flex-direction: row;
+  	align-items: center;
+  	justify-content: space-between;
+  	padding: 32px 165px;
+}
+.view-produk-inner {
+  	position: absolute;
+  	top: 0px;
+  	left: 0px;
+  	width: 1443px;
+  	display: flex;
+  	flex-direction: column;
+  	align-items: center;
+  	justify-content: flex-start;
+  	padding: 16px 0px;
+  	box-sizing: border-box;
+}
+.frame-child {
+  	align-self: stretch;
+  	position: relative;
+  	border-radius: 15px;
+  	max-width: 100%;
+  	overflow: hidden;
+  	height: 475px;
+  	flex-shrink: 0;
+  	object-fit: cover;
+}
+.button {
+  	position: relative;
+  	line-height: 120%;
+  	font-weight: 500;
+}
+.button-wrapper {
+  	flex: 1;
+  	border-radius: 100px;
+  	background-color: #5d50c6;
+  	border: 1px solid #5d50c6;
+  	display: flex;
+  	flex-direction: row;
+  	align-items: flex-start;
+  	justify-content: center;
+  	padding: 16px 32px;
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+.button-wrapper:hover{
+    transform: scale(1.1);
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+}
+.button-hover {
+  	flex: 1;
+  	border-radius: 100px;
+  	display: flex;
+  	flex-direction: row;
+  	align-items: flex-start;
+  	justify-content: flex-start;
+}
+.button-klik {
+  	align-self: stretch;
+  	display: flex;
+  	flex-direction: row;
+  	align-items: flex-start;
+  	justify-content: flex-start;
+}
+.rectangle-parent {
+  	width: 475px;
+  	display: flex;
+  	flex-direction: column;
+  	align-items: flex-start;
+  	justify-content: flex-start;
+  	gap: 45px;
+}
+.laptop-axioo-hype {
+  	align-self: stretch;
+  	position: relative;
+  	line-height: 120%;
+}
+.rp7449000 {
+  	align-self: stretch;
+  	position: relative;
+  	font-size: 32px;
+  	line-height: 120%;
+  	overflow: hidden;
+  	text-overflow: ellipsis;
+  	white-space: nowrap;
+}
+.deskripsi-produk {
+  	align-self: stretch;
+  	position: relative;
+  	font-size: 16px;
+  	line-height: 120%;
+}
+.processor-amd-ryzen {
+  	margin: 0;
+}
+.processor-amd-ryzen-container {
+  	width: 571px;
+  	position: relative;
+  	line-height: 120%;
+  	font-weight: 500;
+  	display: inline-block;
+  	flex-shrink: 0;
+}
+.processor-amd-ryzen-5-6600h-wrapper {
+  	display: flex;
+  	flex-direction: row;
+  	align-items: flex-start;
+  	justify-content: flex-start;
+}
+.frame-wrapper {
+  	align-self: stretch;
+  	display: flex;
+  	flex-direction: row;
+  	align-items: center;
+  	justify-content: flex-start;
+  	font-size: 14px;
+}
+.laptop-axioo-hype-5-amd-x6-r-parent {
+  	width: 571px;
+  	display: flex;
+  	flex-direction: column;
+  	align-items: flex-start;
+  	justify-content: center;
+  	gap: 27px;
+  	font-size: 24px;
+  	color: #191825;
+}
+.frame-group {
+  	position: absolute;
+  	top: 212px;
+  	left: 165px;
+  	display: flex;
+  	flex-direction: row;
+  	align-items: flex-start;
+  	justify-content: flex-start;
+  	gap: 53px;
+  	font-size: 14px;
+  	color: #fff;
+}
+.view-produk {
+  	width: 100%;
+  	position: relative;
+  	background-color: #fff;
+  	height: 1140px;
+  	overflow: hidden;
+  	text-align: left;
+  	font-size: 24px;
+  	color: #191825;
+  	font-family: Poppins;
+}
+
+body {
+  	margin: 0;
+  	line-height: normal;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+.nav-link {
+    color: rgba(25, 24, 37, 0.5);
+    text-decoration: none;
+    transition: color 0.3s ease-in-out;
+}
+
+.nav-link.active,
+.nav-link:hover {
+    color: black;
+    font-weight: bold;
+}
+
+a{
+    text-decoration: none;
+    color: inherit;
+}
+
+
