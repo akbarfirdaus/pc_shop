@@ -1,0 +1,14 @@
+trix-toolbar button.trix-button--icon-link,
+trix-toolbar button.trix-button--icon-heading-1,
+trix-toolbar button.trix-button--icon-code,
+trix-toolbar button.trix-button--icon-quote,
+trix-toolbar button.trix-button--icon-attach {
+    display: none;
+}
+
+trix-editor {
+    min-height: 300px; /* Sesuaikan tinggi editor */
+    max-height: 450px; /* Batas maksimal jika ingin */
+    overflow-y: auto; /* Tambahkan scroll jika kontennya panjang */
+}
+

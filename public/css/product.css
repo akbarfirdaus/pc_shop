@@ -147,12 +147,14 @@
   	justify-content: flex-start;
 }
 .rectangle-parent {
-  	width: 475px;
-  	display: flex;
-  	flex-direction: column;
-  	align-items: flex-start;
-  	justify-content: flex-start;
-  	gap: 45px;
+    width: 475px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 45px;
+    max-height: none; /* Pastikan tidak membatasi tinggi */
+    overflow: visible;
 }
 .laptop-axioo-hype {
   	align-self: stretch;
@@ -169,21 +171,20 @@
   	white-space: nowrap;
 }
 .deskripsi-produk {
-  	align-self: stretch;
-  	position: relative;
-  	font-size: 16px;
-  	line-height: 120%;
+    align-self: stretch;
+    position: relative;
+    font-size: 16px;
+    line-height: 120%;
+    white-space: normal;
+    word-wrap: break-word;
+    overflow: visible; /* Pastikan konten bisa tampil */
 }
 .processor-amd-ryzen {
   	margin: 0;
 }
 .processor-amd-ryzen-container {
-  	width: 571px;
-  	position: relative;
-  	line-height: 120%;
-  	font-weight: 500;
-  	display: inline-block;
-  	flex-shrink: 0;
+    max-height: none;
+    overflow: visible;
 }
 .processor-amd-ryzen-5-6600h-wrapper {
   	display: flex;
@@ -222,15 +223,16 @@
   	color: #fff;
 }
 .view-produk {
-  	width: 100%;
-  	position: relative;
-  	background-color: #fff;
-  	height: 1140px;
-  	overflow: hidden;
-  	text-align: left;
-  	font-size: 24px;
-  	color: #191825;
-  	font-family: Poppins;
+    width: 100%;
+    position: relative;
+    background-color: #fff;
+    min-height: 1140px; /* Gunakan min-height agar tinggi bisa bertambah sesuai konten */
+    height: auto; /* Pastikan tinggi menyesuaikan konten */
+    overflow: visible; /* Boleh dicoba auto juga kalau ingin ada scroll */
+    text-align: left;
+    font-size: 24px;
+    color: #191825;
+    font-family: Poppins;
 }
 
 body {
