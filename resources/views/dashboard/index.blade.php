@@ -108,21 +108,6 @@
 @section('scripts')
     <script>
         // Fungsi untuk mendapatkan 7 hari terakhir
-        function getLast7Days() {
-            const days = [];
-            const today = new Date();
-
-            for (let i = 6; i >= 0; i--) {
-                const d = new Date();
-                d.setDate(today.getDate() - i);
-                days.push(d.toLocaleDateString('id-ID', {
-                    weekday: 'short',
-                    day: '2-digit'
-                }));
-            }
-            return days;
-        }
-
         var optionsProfileVisit = {
             annotations: {
                 position: "back",
@@ -146,11 +131,11 @@
             },
             series: [{
                 name: "Views",
-                data: [120, 150, 180, 210, 190, 250, 300] // Data jumlah view selama 7 hari terakhir
+                data:  {!! json_encode($chartData) !!} // Data jumlah view selama 7 hari terakhir
             }],
             colors: ["#435ebe"],
             xaxis: {
-                categories: getLast7Days(), // Mengambil nama hari dari fungsi
+                categories: {!! json_encode($chartLabels) !!}, // Mengambil nama hari dari fungsi
             },
             yaxis: {
                 title: {
