@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\LogPengunjung;
 use App\Models\Projek;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cookie;
 
 class MainController extends Controller
 {
@@ -13,12 +14,14 @@ class MainController extends Controller
     {
         $projeks = Projek::all();
 
-        // Cek apakah cookie sudah ada
         if (!$request->cookie('visitor_id')) {
             $visitorId = uniqid(); // Buat ID unik
-            $response = response()->json(['message' => 'New visitor']);
-            $response->cookie('visitor_id', $visitorId, 1440); // 1440 menit = 1 hari
-            return $response;
+
+            // Buat cookie
+            $cookie = Cookie::make('visitor_id', $visitorId, 1440);
+
+            // Redirect ke halaman utama dengan cookie (agar tidak mengembalikan response kosong)
+            return redirect()->route('main')->withCookie($cookie);
         } else {
             $visitorId = $request->cookie('visitor_id');
         }
