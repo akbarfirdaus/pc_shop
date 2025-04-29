@@ -13,7 +13,6 @@
 </head>
 
 <body>
-
     <div class="katalog-page">
         <div class="katalog-page-child">
         </div>
@@ -39,37 +38,38 @@
                         <a href="/#project" class="nav-link">Project</a>
                         <a href="/#contact" class="nav-link">Contact Us</a>
                     </div>
+                    <div class="hamburger">☰</div>
                 </div>
             </div>
             <div class="frame-container">
                 <div class="katalog-produk-parent">
                     <b class="katalog-produk">Katalog Produk</b>
                     <div class="temukan-berbagai-produk-container">
-                        <p class="temukan-berbagai-produk">Temukan berbagai produk berkualitas tinggi yang dirancang
-                            untuk memenuhi kebutuhan Anda. Dari laptop dan komputer terbaru </p>
-                        <p class="hingga-aksesori-penting">hingga aksesori penting, katalog kami menawarkan beragam
-                            pilihan untuk penggunaan pribadi maupun bisnis.</p>
+                        <p class="temukan-berbagai-produk">
+                            Temukan berbagai produk berkualitas tinggi yang dirancang untuk memenuhi kebutuhan Anda. Dari laptop dan komputer terbaru, hingga aksesori penting, katalog kami menawarkan beragam
+                            pilihan untuk penggunaan pribadi maupun bisnis.
+                        </p>
                     </div>
                 </div>
                 <div class="button-klik-parent filter-buttons">
                     <div class="button-klik">
                         <div class="button-hover">
                             <div class="button-wrapper">
-                                <button class="filter-btn button" data-filter="all">All</button>
+                                <button class="filter-btn button active" data-filter="all">All</button>
                             </div>
                         </div>
                     </div>
-
                     @foreach ($kategoris as $kategori)
-                        <div class="button-klik">
-                            <div class="button-hover">
-                                <div class="button-wrapper">
-                                    <button class="filter-btn button"
-                                        data-filter="{{ $kategori->slug }}">{{ $kategori->name }}</button>
-                                </div>
+                    <div class="button-klik">
+                        <div class="button-hover">
+                            <div class="button-wrapper">
+                                <button class="filter-btn button"
+                                data-filter="{{ $kategori->slug }}">{{ $kategori->name }}</button>
                             </div>
                         </div>
+                    </div>
                     @endforeach
+                </div>
                     <div class="frame-parent1">
                         @foreach ($produks as $produk)
                             <div class="rectangle-parent">
@@ -99,7 +99,6 @@
                             </div>
                         @endforeach
                     </div>
-                </div>
             </div>
             <div class="frame-parent66">
                 <div class="frame-parent67">
@@ -139,28 +138,52 @@
     </div>
 </body>
 <script>
-    document.addEventListener("DOMContentLoaded", function() {
+    document.addEventListener("DOMContentLoaded", function () {
         const filterButtons = document.querySelectorAll(".filter-btn");
-        const products = document.querySelectorAll(".product-item");
 
         filterButtons.forEach(button => {
-            button.addEventListener("click", function() {
-                const filter = this.getAttribute("data-filter");
-                console.log(`Tombol ${filter} diklik`); // Debugging
+            button.addEventListener("click", function () {
+                // Hapus class 'active' dari semua tombol
+                filterButtons.forEach(btn => btn.classList.remove("active"));
 
-                products.forEach(product => {
-                    const productCategory = product.getAttribute("data-category");
-                    console.log(`Produk ${productCategory} dicek`); // Debugging
-
-                    if (filter === "all" || productCategory === filter) {
-                        product.classList.remove("hidden");
-                    } else {
-                        product.classList.add("hidden");
-                    }
-                });
+                // Tambahkan class 'active' hanya ke tombol yang diklik
+                this.classList.add("active");
             });
         });
     });
+
+
+document.addEventListener("DOMContentLoaded", function () {
+const hamburger = document.querySelector(".hamburger");
+const menu = document.querySelector(".home-parent");
+
+hamburger.addEventListener("click", function () {
+    menu.classList.toggle("show-menu");
+    });
+});
+
+document.addEventListener("DOMContentLoaded", function() {
+    const filterButtons = document.querySelectorAll(".filter-btn");
+    const products = document.querySelectorAll(".product-item");
+
+    filterButtons.forEach(button => {
+        button.addEventListener("click", function() {
+            const filter = this.getAttribute("data-filter");
+            console.log(`Tombol ${filter} diklik`); // Debugging
+
+            products.forEach(product => {
+                const productCategory = product.getAttribute("data-category");
+                console.log(`Produk ${productCategory} dicek`); // Debugging
+
+                if (filter === "all" || productCategory === filter) {
+                    product.classList.remove("hidden");
+                } else {
+                    product.classList.add("hidden");
+                }
+            });
+        });
+    });
+});
 
     var homeText = document.getElementById("homeText");
     if (homeText) {

@@ -1,0 +1,6 @@
+1. Looping logo merk jangan terlalu cepat samakan kecepatannya dengan preview project,
+    dan loopingnya tidak mulus, ke restart ulang
+2. Card service tidak rata tengah
+3. Card Contact Us tidak konsisten, posisi tidak full, kanan masih kosong
+4. Tampilan tidak responsif
+

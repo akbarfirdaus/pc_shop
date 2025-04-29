@@ -7,9 +7,6 @@
 
     <link rel="stylesheet" href="{{ asset('css/product.css') }}" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;700;900&display=swap" />
-
-
-
 </head>
 
 <body>
@@ -37,6 +34,7 @@
                     <a href="/#project" class="nav-link">Project</a>
                     <a href="/#contact" class="nav-link">Contact Us</a>
                 </div>
+                <div class="hamburger">☰</div>
             </div>
         </div>
         <div class="frame-group">
@@ -72,6 +70,38 @@
 
 
     <script>
+        document.addEventListener("DOMContentLoaded", function () {
+const hamburger = document.querySelector(".hamburger");
+const menu = document.querySelector(".home-parent");
+
+hamburger.addEventListener("click", function () {
+    menu.classList.toggle("show-menu");
+    });
+});
+
+        document.addEventListener("DOMContentLoaded", function() {
+            const filterButtons = document.querySelectorAll(".filter-btn");
+            const products = document.querySelectorAll(".product-item");
+
+            filterButtons.forEach(button => {
+                button.addEventListener("click", function() {
+                    const filter = this.getAttribute("data-filter");
+                    console.log(`Tombol ${filter} diklik`); // Debugging
+
+                    products.forEach(product => {
+                        const productCategory = product.getAttribute("data-category");
+                        console.log(`Produk ${productCategory} dicek`); // Debugging
+
+                        if (filter === "all" || productCategory === filter) {
+                            product.classList.remove("hidden");
+                        } else {
+                            product.classList.add("hidden");
+                        }
+                    });
+                });
+            });
+        });
+
         var homeText = document.getElementById("homeText");
         if (homeText) {
             homeText.addEventListener("click", function(e) {

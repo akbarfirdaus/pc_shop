@@ -21,9 +21,6 @@
         </div>
         <div class="landing-page-item">
         </div>
-        {{-- <img class="objects-icon" alt="" src="OBJECTS.png">
-
-    		<img class="objects-icon1" alt="" src="OBJECTS.svg"> --}}
 
         <div class="frame-parent">
             <div class="frame-group">
@@ -41,6 +38,7 @@
                     <a href="#project" class="nav-link">Project</a>
                     <a href="#contact" class="nav-link">Contact Us</a>
                 </div>
+                <div class="hamburger">☰</div>
             </div>
             <div class="frame-container">
                 <div class="frame-div">
@@ -49,10 +47,10 @@
                         <img class="work-1-icon" alt="" src="{{ asset('images/work 1.svg') }}">
 
                     </div>
-                    <b class="solusi-teknologi-tepat-container">
+                    <div class="solusi-teknologi-tepat-container">
                         <p class="solusi-teknologi">Solusi Teknologi,</p>
                         <p class="solusi-teknologi">Tepat dan Terpercaya</p>
-                    </b>
+                    </div>
                     <div class="melayani-penjualan-dan-container">
                         <p class="solusi-teknologi">“Melayani penjualan dan perbaikan laptop, </p>
                         <p class="solusi-teknologi">komputer, serta printer dengan sepenuh hati."</p>
@@ -136,6 +134,8 @@
                                     hingga implementasi.</div>
                             </div>
                         </div>
+                        <button class="arrow left-arrow">&#10094;</button>
+                        <button class="arrow right-arrow">&#10095;</button>
                     </div>
                 </div>
             </section>
@@ -146,19 +146,18 @@
                             <b class="services">Our project</b>
                             <b class="projects-that-inspire">"Projects that Inspire and Impact"</b>
                         </div>
-                        <div class="group-parent">
-                            <div class="rectangle-group">
+                        <div class="group-parent project-navigation">
+                            <div id="arrow-left" class="rectangle-group">
                                 <div class="group-child">
+                                    <img class="arrow-left-1-icon" alt=""
+                                        src="{{ asset('images/arrow-left 1.svg') }}">
                                 </div>
-                                <img class="arrow-left-1-icon" alt=""
-                                    src="{{ asset('images/arrow-left 1.svg') }}">
-
                             </div>
-                            <div class="rectangle-container">
+                            <div id="arrow-right" class="rectangle-container">
                                 <div class="group-item">
+                                    <img id="arrow-right" class="arrow-left-2-icon" alt=""
+                                        src="{{ asset('images/arrow-left 2.svg') }}">
                                 </div>
-                                <img class="arrow-left-2-icon" alt=""
-                                    src="{{ asset('images/arrow-left 2.svg') }}">
                             </div>
                         </div>
                     </div>
@@ -175,13 +174,26 @@
                                     <div class="pertamina">{{ $projek->mitra }}</div>
                                 </div>
                                 <div class="frame-wrapper">
-                                    <div class="see-our-services-wrapper">
-                                        <b class="see-our-services">Show Project</b>
-                                    </div>
+                                    <!-- Button untuk membuka popup -->
+                                    <button class="see-our-services-wrapper show-project-btn"
+                                            data-name="{{ $projek->name }}"
+                                            data-mitra="{{ $projek->mitra }}"
+                                            data-thumbnail="{{ asset('storage/' . $projek->thumbnail) }}">
+                                        Show Project
+                                    </button>
                                 </div>
                             </div>
                         </div>
                     @endforeach
+                </div>
+                <!-- Popup Modal -->
+                <div id="projectModal" class="modal">
+                    <div class="modal-content">
+                        <span class="close">&times;</span>
+                        <img id="modalThumbnail" src="" alt="Project Image">
+                        <h2 id="modalTitle"></h2>
+                        <p id="modalMitra"></p>
+                    </div>
                 </div>
             </div>
             <div class="background-parent">
@@ -214,32 +226,28 @@
                     <div class="frame-parent15">
                         <div class="group-container">
                             <div class="rectangle-group">
-                                <div class="group-inner">
-                                </div>
+                                <div class="group-inner"></div>
                                 <img class="icon-check" alt="" src="{{ asset('images/centang-oren.svg') }}">
 
                             </div>
                             <div class="custom-solutions-parent">
                                 <b class="custom-solutions">Custom Solutions</b>
-                                <div class="every-project-is-container">
-                                    <p class="solusi-teknologi">Every project is tailored to meet the specific </p>
-                                    <p class="solusi-teknologi">needs of your business.</p>
+                                <div class="melayani-penjualan-dan-container">
+                                    <p class="solusi-teknologi">Every project is tailored to meet the specific needs of your business. </p>
                                 </div>
                             </div>
                         </div>
                         <div class="group-parent1">
                             <div class="rectangle-group">
-                                <div class="rectangle-div">
-                                </div>
+                                <div class="rectangle-div"></div>
                                 <img class="icon-check" alt=""
                                     src="{{ asset('images/centang-kuning.svg') }}">
 
                             </div>
                             <div class="custom-solutions-parent">
-                                <b class="see-our-services">High-Quality Results</b>
+                                <b class="custom-solutions">High-Quality Results</b>
                                 <div class="melayani-penjualan-dan-container">
-                                    <p class="solusi-teknologi">Delivering high-quality outcomes aligned</p>
-                                    <p class="solusi-teknologi">with the latest industry standards.</p>
+                                    <p class="solusi-teknologi">Delivering high-quality outcomes aligned with the latest industry standards.</p>
                                 </div>
                             </div>
                         </div>
@@ -247,13 +255,11 @@
                             <div class="rectangle-group">
                                 <div class="group-child1"></div>
                                 <img class="icon-check" alt="" src="{{ asset('images/centang-pink.svg') }}">
-
                             </div>
                             <div class="custom-solutions-parent">
-                                <b class="see-our-services">Cost-Effective Services</b>
+                                <b class="custom-solutions">Cost-Effective Services</b>
                                 <div class="melayani-penjualan-dan-container">
-                                    <p class="solusi-teknologi">Affordable solutions without compromising </p>
-                                    <p class="solusi-teknologi">quality.</p>
+                                    <p class="solusi-teknologi">Affordable solutions without compromising quality. </p>
                                 </div>
                             </div>
                         </div>
@@ -262,7 +268,6 @@
                 <img class="group-child2" alt="" src="{{ asset('images/Rectangle 9.png') }}">
 
                 <img class="group-child3" alt="" src="{{ asset('images/Rectangle 10.png') }}">
-
             </div>
             <div class="frame-parent16" data-scroll-to="frameContainer">
                 <section id="contact">
@@ -274,11 +279,11 @@
                     <div class="frame-parent17">
                         <div class="message-1-parent">
                             <img class="send-1-icon" alt="" src="{{ asset('images/message 1.svg') }}">
-
                             <b class="see-our-services">Your Email</b>
                         </div>
                         <div class="send-wrapper">
-                            <b class="see-our-services">Send</b>
+                            <b class="send-text see-our-services">Send</b>
+                            <img class="send-icon-mobile" src="{{ asset('images/send 1.svg') }}" alt="Send Icon" />
                         </div>
                     </div>
                 </section>
@@ -321,97 +326,269 @@
         </div>
     </div>
 </body>
-
 </html>
 <script>
-    document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
+    const hamburger = document.querySelector(".hamburger");
+    const menu = document.querySelector(".home-parent");
+
+    hamburger.addEventListener("click", function () {
+        menu.classList.toggle("show-menu");
+    });
+});
+
+document.addEventListener("DOMContentLoaded", function () {
+    function setupInfiniteScroll() {
         let track = document.querySelector(".logo-track");
-        let logos = track.children;
-        let totalWidth = 0;
+        track.innerHTML = ""; // Hapus isi sebelumnya untuk mencegah duplikasi berlebih
 
-        // Hitung total lebar semua logo
-        for (let logo of logos) {
-            totalWidth += logo.offsetWidth + 20; // gap
-        }
+        let logos = [
+            { src: "{{ asset('images/Lenovo.svg') }}", alt: "Lenovo" },
+            { src: "{{ asset('images/Asus.svg') }}", alt: "Asus" },
+            { src: "{{ asset('images/Acer.svg') }}", alt: "Acer" },
+            { src: "{{ asset('images/Canon.svg') }}", alt: "Canon" },
+            { src: "{{ asset('images/Hp.svg') }}", alt: "HP" }
+        ];
 
-        // Duplikasi logo hingga track cukup panjang untuk looping
-        while (totalWidth < window.innerWidth * 3) {
-            for (let logo of [...logos]) {
-                let clone = logo.cloneNode(true);
-                track.appendChild(clone);
-                totalWidth += clone.offsetWidth + 20;
-            }
-        }
-    });
+        // Tambahkan logo awal
+        logos.forEach(logo => {
+            let img = document.createElement("img");
+            img.src = logo.src;
+            img.alt = logo.alt;
+            img.classList.add("logo");
+            track.appendChild(img);
+        });
 
-    document.addEventListener("DOMContentLoaded", function() {
-        let track = document.querySelector(".project-track");
-        let logos = track.children;
-        let totalWidth = 0;
-
-        // Hitung total lebar semua logo
-        for (let logo of logos) {
-            totalWidth += logo.offsetWidth + 20; // gap
-        }
+        let totalWidth = track.scrollWidth;
 
         // Duplikasi logo hingga track cukup panjang untuk looping
-        while (totalWidth < window.innerWidth * 3) {
-            for (let logo of [...logos]) {
-                let clone = logo.cloneNode(true);
-                track.appendChild(clone);
-                totalWidth += clone.offsetWidth + 20;
-            }
+        while (totalWidth < window.innerWidth * 10) {
+            logos.forEach(logo => {
+                let img = document.createElement("img");
+                img.src = logo.src;
+                img.alt = logo.alt;
+                img.classList.add("logo");
+                track.appendChild(img);
+            });
+            totalWidth = track.scrollWidth; // Perbarui total lebar setelah menambah elemen
         }
+
+        startScrolling();
+    }
+
+    function startScrolling() {
+        let track = document.querySelector(".logo-track");
+        let scrollSpeed = window.innerWidth < 767 ? 1.5 : 1; // Percepat di layar kecil
+        let scrollPosition = 0;
+
+        function scrollLogos() {
+            scrollPosition -= scrollSpeed;
+            track.style.transform = `translateX(${scrollPosition}px)`;
+
+            // Reset posisi agar terus looping
+            if (Math.abs(scrollPosition) >= track.scrollWidth / 2) {
+                scrollPosition = 0;
+            }
+
+            requestAnimationFrame(scrollLogos);
+        }
+
+        scrollLogos();
+    }
+
+    // Inisialisasi saat halaman dimuat
+    setupInfiniteScroll();
+
+    // Jalankan ulang jika ukuran layar berubah
+    window.addEventListener("resize", setupInfiniteScroll);
+});
+
+//animasi untuk service
+document.addEventListener("DOMContentLoaded", function () {
+    let currentIndex = 0;
+    const items = document.querySelectorAll(".destination-1-parent");
+    const totalItems = items.length;
+    let autoSlide = null; // Pastikan hanya satu interval aktif
+
+    // Cek apakah layar dalam mode mobile (max-width: 767px)
+    function isMobile() {
+        return window.matchMedia("(max-width: 579px)").matches;
+    }
+
+    function updateSlide() {
+        if (!isMobile()) return; // Stop jika bukan tampilan mobile
+        const offset = -currentIndex * 100;
+        items.forEach(item => {
+            item.style.transform = `translateX(${offset}%)`;
+            item.style.transition = "transform 0.5s ease-in-out"; // Animasi smooth
+        });
+    }
+
+    function nextSlide() {
+        if (!isMobile()) return;
+        currentIndex = (currentIndex < totalItems - 1) ? currentIndex + 1 : 0;
+        updateSlide();
+    }
+
+    function prevSlide() {
+        if (!isMobile()) return;
+        currentIndex = (currentIndex > 0) ? currentIndex - 1 : totalItems - 1;
+        updateSlide();
+    }
+
+    function startAutoSlide() {
+        if (!isMobile() || autoSlide) return; // Cegah duplikasi interval
+        autoSlide = setInterval(nextSlide, 5000); // Slide otomatis setiap 5 detik
+    }
+
+    function stopAutoSlide() {
+        clearInterval(autoSlide);
+        autoSlide = null; // Pastikan interval benar-benar berhenti
+    }
+
+    function resetPosition() {
+        currentIndex = 0;
+        items.forEach(item => {
+            item.style.transform = `translateX(0%)`;
+            item.style.transition = "none"; // Hilangkan animasi saat reset
+        });
+    }
+
+    document.querySelector(".left-arrow").addEventListener("click", function () {
+        stopAutoSlide();
+        prevSlide();
+        startAutoSlide();
     });
 
+    document.querySelector(".right-arrow").addEventListener("click", function () {
+        stopAutoSlide();
+        nextSlide();
+        startAutoSlide();
+    });
 
-    // var productText = document.getElementById("productText");
-    // if(productText) {
-    // 	productText.addEventListener("click", function (e) {
-    // 			// Add your code here
-    // 	});
-    // }
+    // Mulai autoplay saat halaman dimuat (hanya jika mobile)
+    if (isMobile()) {
+        startAutoSlide();
+    }
 
-    // var serviceText = document.getElementById("serviceText");
-    // if(serviceText) {
-    // 	serviceText.addEventListener("click", function () {
-    // 			var anchor = document.querySelector("[data-scroll-to='frameContainer2']");
-    // 			if(anchor) {
-    // 				anchor.scrollIntoView({"block":"start","behavior":"smooth"})
-    // 			}
-    // 	});
-    // }
+    // Periksa ukuran layar saat diresize
+    window.addEventListener("resize", function () {
+        if (!isMobile()) {
+            stopAutoSlide(); // Stop animasi jika keluar dari mode mobile
+            resetPosition(); // Kembalikan ke slide pertama
+        } else {
+            startAutoSlide(); // Mulai lagi jika kembali ke mode mobile
+        }
+    });
+});
+
+//animasi untuk daftar project
+document.addEventListener("DOMContentLoaded", function () {
+    const track = document.querySelector(".project-track");
+    let cards = document.querySelectorAll(".vector-group");
+    const leftArrow = document.getElementById("arrow-left");
+    const rightArrow = document.getElementById("arrow-right");
+
+    if (cards.length === 0) return; // Cegah error jika tidak ada card
+
+    const cardWidth = cards[0].offsetWidth + 40; // Lebar card + jarak antar card
+    let totalCards = cards.length;
+    let isAnimating = false;
+    let autoSlide;
+
+    // 🔥 **Clone cards agar looping tetap berjalan**
+    if (totalCards > 0) {
+        let cloneCount = Math.ceil(3 / totalCards) * totalCards;
+        for (let i = 0; i < cloneCount; i++) {
+            let clone = cards[i % totalCards].cloneNode(true);
+            clone.classList.add("cloned");
+            track.appendChild(clone);
+        }
+    }
+
+    function startAutoSlide() {
+        autoSlide = setInterval(() => {
+            slideProjects("next");
+        }, 3000);
+    }
+
+    function slideProjects(direction) {
+        if (isAnimating) return;
+        isAnimating = true;
+
+        if (direction === "next") {
+            track.style.transition = "transform 1s ease-in-out";
+            track.style.transform = `translateX(${cardWidth}px)`;
+
+            setTimeout(() => {
+                track.style.transition = "none";
+                let firstCard = track.firstElementChild;
+                track.appendChild(firstCard); // Pindahkan kartu pertama ke belakang
+                track.style.transform = "translateX(0)";
+                isAnimating = false;
+            }, 1000);
+        } else if (direction === "prev") {
+            let lastCard = track.lastElementChild;
+            track.insertBefore(lastCard, track.firstElementChild);
+            track.style.transition = "none";
+            track.style.transform = `translateX(${cardWidth}px)`;
+
+            setTimeout(() => {
+                track.style.transition = "transform 1s ease-in-out";
+                track.style.transform = "translateX(0)";
+                isAnimating = false;
+            }, 1000);
+        }
+    }
+
+    function manualSlide(direction) {
+        clearInterval(autoSlide);
+        slideProjects(direction);
+        startAutoSlide();
+    }
+
+    // 🔥 **Hanya navigasi dengan tombol, tidak ada swipe**
+    rightArrow.addEventListener("click", () => manualSlide("next"));
+    leftArrow.addEventListener("click", () => manualSlide("prev"));
+
+    startAutoSlide(); // Mulai animasi otomatis
+});
 
 
-    // var projectText = document.getElementById("projectText");
-    // if(projectText) {
-    // 	projectText.addEventListener("click", function () {
-    // 			var anchor = document.querySelector("[data-scroll-to='frameContainer1']");
-    // 			if(anchor) {
-    // 				anchor.scrollIntoView({"block":"start","behavior":"smooth"})
-    // 			}
-    // 	});
-    // }
 
+//popup project
+document.addEventListener("DOMContentLoaded", function () {
+    let modal = document.getElementById("projectModal");
+    let closeModal = document.querySelector(".close");
 
-    // var contactUsText = document.getElementById("contactUsText");
-    // if(contactUsText) {
-    // 	contactUsText.addEventListener("click", function () {
-    // 			var anchor = document.querySelector("[data-scroll-to='frameContainer']");
-    // 			if(anchor) {
-    // 				anchor.scrollIntoView({"block":"start","behavior":"smooth"})
-    // 			}
-    // 	});
-    // }
+    // Pastikan modal tetap tersembunyi saat halaman dimuat
+    modal.style.display = "none";
 
+    // Event untuk tombol "Show Project"
+    document.querySelectorAll(".show-project-btn").forEach(button => {
+        button.addEventListener("click", function () {
+            let name = this.getAttribute("data-name");
+            let mitra = this.getAttribute("data-mitra");
+            let thumbnail = this.getAttribute("data-thumbnail");
 
-    // var frameContainer1 = document.getElementById("frameContainer1");
-    // if(frameContainer1) {
-    // 	frameContainer1.addEventListener("click", function () {
-    // 			var anchor = document.querySelector("[data-scroll-to='ourTopValue']");
-    // 			if(anchor) {
-    // 				anchor.scrollIntoView({"block":"start","behavior":"smooth"})
-    // 			}
-    // 	});
-    // }
+            document.getElementById("modalTitle").innerText = name;
+            document.getElementById("modalMitra").innerText = mitra;
+            document.getElementById("modalThumbnail").src = thumbnail;
+
+            modal.style.display = "flex"; // Tampilkan modal saat tombol diklik
+        });
+    });
+
+    // Event untuk menutup modal saat tombol close diklik
+    closeModal.addEventListener("click", function () {
+        modal.style.display = "none";
+    });
+
+    // Event untuk menutup modal saat klik di luar area modal
+    window.addEventListener("click", function (event) {
+        if (event.target === modal) {
+            modal.style.display = "none";
+        }
+    });
+});
 </script>

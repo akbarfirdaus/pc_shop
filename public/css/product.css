@@ -1,3 +1,16 @@
+.view-produk {
+    width: 100%;
+    position: relative;
+    background-color: #fff;
+    min-height: 95vh;       /* biar tetap penuh satu layar minimal */
+    height: auto;            /* biar mengikuti tinggi konten */
+    overflow-x: hidden;      /* ini aman untuk cegah scroll horizontal */
+    text-align: left;
+    font-size: 24px;
+    color: #191825;
+    font-family: Poppins;
+}
+
 .view-produk-child {
   	position: absolute;
   	top: -223px;
@@ -88,11 +101,23 @@
   	justify-content: space-between;
   	padding: 32px 165px;
 }
+
+.hamburger {
+    display: none;
+    font-size: 30px;
+    cursor: pointer;
+}
+
+.show-menu {
+    display: flex !important;
+}
+
 .view-produk-inner {
   	position: absolute;
   	top: 0px;
   	left: 0px;
-  	width: 1443px;
+    width: 100%;
+  	max-width: 1443px;
   	display: flex;
   	flex-direction: column;
   	align-items: center;
@@ -100,6 +125,58 @@
   	padding: 16px 0px;
   	box-sizing: border-box;
 }
+
+@media (max-width: 1457px) {
+    .frame-parent {
+        padding: 32px 165px;
+    }
+
+    .home-parent {
+        gap: 64px;
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 1220px) {
+    .frame-parent {
+        padding: 20px 50px;
+    }
+
+    .home-parent {
+        gap: 30px;
+        font-size: 18px;
+    }
+}
+
+@media (max-width: 767px) {
+    .frame-parent {
+        padding: 16px 20px;
+    }
+
+    .home-parent {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        background: white;
+        padding: 10px 0;
+        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        text-align: center;
+        z-index: 1000;
+    }
+
+    .home-parent a {
+        padding: 10px;
+        display: block;
+    }
+
+    .hamburger {
+        display: block;
+    }
+}
+
 .frame-child {
   	align-self: stretch;
   	position: relative;
@@ -222,18 +299,120 @@
   	font-size: 14px;
   	color: #fff;
 }
-.view-produk {
-    width: 100%;
-    position: relative;
-    background-color: #fff;
-    min-height: 1140px; /* Gunakan min-height agar tinggi bisa bertambah sesuai konten */
-    height: auto; /* Pastikan tinggi menyesuaikan konten */
-    overflow: visible; /* Boleh dicoba auto juga kalau ingin ada scroll */
-    text-align: left;
-    font-size: 24px;
-    color: #191825;
-    font-family: Poppins;
+
+@media (min-width: 769px) and (max-width: 1220px) {
+    .frame-group {
+        top: 140px;
+        left: 0;
+        flex-direction: row;
+        align-items: flex-start;
+        gap: 32px;
+        padding: 0 40px;
+    }
+
+    .rectangle-parent {
+        width: 100%;
+        gap: 32px;
+    }
+
+    .frame-child {
+        height: 400px;
+    }
+
+    .button-klik {
+        width: 100%;
+    }
+
+    .laptop-axioo-hype-5-amd-x6-r-parent {
+        width: 90%;
+        gap: 24px;
+        font-size: 22px;
+    }
+
+    .laptop-axioo-hype,
+    .rp7449000,
+    .deskripsi-produk {
+        font-size: 22px;
+        line-height: 130%;
+    }
+
+    .rp7449000 {
+        font-size: 28px;
+    }
+
+    .deskripsi-produk {
+        font-size: 18px;
+    }
+
+    .frame-wrapper {
+        flex-direction: column;
+    }
 }
+
+@media (max-width: 768px) {
+    .frame-group {
+        position: relative; /* ubah dari absolute supaya lebih fleksibel di mobile */
+        top: 140px;
+        left: 0;
+        flex-direction: column;
+        align-items: center;
+        gap: 24px;
+        padding: 20px;
+    }
+
+    .rectangle-parent {
+        width: 100%;
+        max-width: 100%;
+        gap: 24px;
+    }
+
+    .frame-child {
+        width: 100%;
+        height: auto; /* supaya gambar tidak kaku tingginya */
+        max-height: 400px;
+    }
+
+    .button-klik {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .button-hover, .button-wrapper {
+        width: 100%;
+    }
+
+        .laptop-axioo-hype-5-amd-x6-r-parent {
+        width: 100%;
+        padding: 0 20px;
+        gap: 20px;
+        font-size: 20px;
+    }
+
+    .laptop-axioo-hype,
+    .rp7449000,
+    .deskripsi-produk {
+        font-size: 20px;
+        line-height: 130%;
+    }
+
+    .rp7449000 {
+        font-size: 24px;
+    }
+
+    .deskripsi-produk {
+        font-size: 16px;
+    }
+
+    .frame-wrapper {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .processor-amd-ryzen-5-6600h-wrapper {
+        width: 100%;
+    }
+}
+
 
 body {
   	margin: 0;
