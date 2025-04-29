@@ -41,7 +41,7 @@ class DashboardController extends Controller
     public function grafis(){
         $startDate = Carbon::now()->subWeek(); // Tanggal mulai satu minggu yang lalu
         $endDate = Carbon::now(); // Tanggal sekarang
-        $grafis = DB::table('log_pengunjungs')
+        $grafis = DB::table('log_pengunjungs') 
                         ->select(DB::raw('DATE(created_at) as visit_date'), DB::raw('COUNT(*) as record_count'))
                         ->whereDate('created_at', '>=', $startDate)
                         ->whereDate('created_at', '<=', $endDate)

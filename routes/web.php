@@ -21,9 +21,9 @@ use App\Http\Controllers\MainController;
 |
 */
 
-Route::get('/', [MainController::class, 'index'])->name('main')->middleware('guest');
-Route::get('/katalog', [KatalogController::class, 'index'])->name('katalog')->middleware('guest');
-Route::get('/katalog/{slug}', [KatalogController::class, 'show'])->name('katalog.show')->middleware('guest');
+Route::get('/', [MainController::class, 'index'])->name('main');
+Route::get('/katalog', [KatalogController::class, 'index'])->name('katalog');
+Route::get('/katalog/{slug}', [KatalogController::class, 'show'])->name('katalog.show');
 
 Route::prefix('/dashboard')->group(function () {
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard')->middleware('auth');
