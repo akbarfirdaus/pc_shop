@@ -25,34 +25,10 @@ html {
   	height: 500px;
   	opacity: 0.5;
 }
-/* .objects-icon {
-  	position: absolute;
-  	top: 898.75px;
-  	left: 38px;
-  	width: 65px;
-  	height: 169.9px;
-  	overflow: hidden;
-  	object-fit: contain;
-  	display: none;
-}
-.objects-icon1 {
-  	position: absolute;
-  	top: 1879px;
-  	left: 1300px;
-  	width: 107px;
-  	height: 106.5px;
-  	overflow: hidden;
-  	display: none;
-} */
 .vector-icon {
-  	width: 40px;
+  	width: 200px;
   	position: relative;
-  	height: 40px;
-}
-.pc-shop {
-  	position: relative;
-  	line-height: 40px;
-  	font-weight: 900;
+  	height: 120px;
 }
 .vector-parent {
   	display: flex;
@@ -134,31 +110,44 @@ html {
     }
 
     .home-parent {
-        display: none; /* Sembunyikan menu di layar kecil */
+        visibility: hidden;
+        opacity: 0;
+        transform: translateY(-20px);
+        transition: opacity 0.4s ease, transform 0.4s ease;
         flex-direction: column;
+        background: white;
         position: absolute;
         top: 70px;
         left: 0;
         width: 100%;
-        background: white;
         padding: 10px 0;
         box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
         text-align: center;
-        z-index: 1000;
+        z-index: 999;
+        pointer-events: none;
     }
 
     .home-parent a {
+        max-height: 500px;
         padding: 10px;
-        display: block;
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .home-parent.show {
+        visibility: visible;
+        opacity: 1;
+        transform: translateY(0);
+        pointer-events: auto; /* aktifkan klik hanya saat terlihat */
     }
 
     .hamburger {
         display: block;
+        font-size: 30px;
+        cursor: pointer;
+        z-index: 100;
+        position: relative;
     }
-}
-
-.show-menu {
-    display: flex !important;
 }
 
 .best-technology-solutions {
@@ -774,9 +763,7 @@ html {
 
     .frame-parent4 {
         display: flex;
-        flex-direction: row; /* Tetap dalam row */
-        overflow-x: auto; /* Supaya bisa scroll ke samping */
-        scroll-snap-type: x mandatory; /* Slide otomatis ke posisi card */
+        flex-direction: row;
         -webkit-overflow-scrolling: touch; /* Smooth scrolling di iOS */
         gap: 10px;
         width: 50%;
@@ -1023,6 +1010,7 @@ html {
         flex-direction: column;
         align-items: center; /* Memastikan teks di tengah */
         justify-content: center;
+        padding: 0 20px;
     }
 
     .projects-that-inspire {
@@ -1036,7 +1024,7 @@ html {
         right: 0;
         display: flex;
         justify-content: space-between;
-        width: 90%;
+        width: 95%;
         padding: 0 15px; /* 🔹 Tambahkan sedikit padding biar nggak nempel ke tepi */
         z-index: 10;
     }
@@ -1689,7 +1677,7 @@ html {
   	display: flex;
   	flex-direction: row;
   	align-items: flex-start;
-  	justify-content: flex-start;
+  	justify-content: center;
   	padding: 0px 165px;
   	gap: 153px;
   	font-size: 24px;
@@ -1829,6 +1817,7 @@ html {
 
 @media (max-width: 767px) {
     .frame-parent18 {
+        justify-content: flex-start;
         position: relative; /* biar tetap dalam alur layout */
         padding: clamp(40px, 5vw, 96px) 20px;
         flex-wrap: wrap;

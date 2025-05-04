@@ -22,19 +22,18 @@
         <div class="view-produk-inner">
             <div class="frame-parent">
                 <div class="vector-parent">
-                    <img class="vector-icon" alt="" src="{{ asset('images/Vector.svg') }}">
-                    <div class="pc-shop">
-                        <a href="/">PC Shop</a>
-                    </div>
+                    <a href="/">
+                        <img class="vector-icon" alt="" src="{{ asset('images/logo-pc-shop1.png') }}">
+                    </a>
                 </div>
-                <div class="home-parent">
+                <div class="home-parent" id="navMenu">
                     <a href="/" class="nav-link">Home</a>
                     <a href="{{ route('katalog') }}" class="nav-link">Product</a>
                     <a href="/#service" class="nav-link">Service</a>
                     <a href="/#project" class="nav-link">Project</a>
                     <a href="/#contact" class="nav-link">Contact Us</a>
                 </div>
-                <div class="hamburger">☰</div>
+                <div class="hamburger" id="hamburger">&#9776;</div>
             </div>
         </div>
         <div class="frame-group">
@@ -69,12 +68,28 @@
 
 
 
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-const hamburger = document.querySelector(".hamburger");
-const menu = document.querySelector(".home-parent");
+</body>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const hamburger = document.getElementById('hamburger');
+    const navMenu = document.getElementById('navMenu');
 
-hamburger.addEventListener("click", function () {
+    let menuOpen = false;
+
+    hamburger.addEventListener('click', function () {
+        console.log('Hamburger clicked');
+        navMenu.classList.toggle('show');
+        menuOpen = !menuOpen;
+        hamburger.innerHTML = menuOpen ? '&times;' : '&#9776;';
+    });
+})
+
+
+document.addEventListener("DOMContentLoaded", function () {
+    const hamburger = document.querySelector(".hamburger");
+    const menu = document.querySelector(".home-parent");
+
+    hamburger.addEventListener("click", function () {
     menu.classList.toggle("show-menu");
     });
 });
@@ -125,6 +140,4 @@ hamburger.addEventListener("click", function () {
             window.open(url, '_blank'); // Buka di tab baru
         }
     </script>
-</body>
-
 </html>

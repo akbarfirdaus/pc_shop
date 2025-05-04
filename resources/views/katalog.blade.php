@@ -26,19 +26,18 @@
             <div class="frame-wrapper">
                 <div class="frame-group">
                     <div class="vector-parent">
-                        <img class="vector-icon" alt="" src="{{ asset('images/Vector.svg') }}">
-                        <div class="pc-shop">
-                            <a href="/">PC Shop</a>
-                        </div>
+                        <a href="/">
+                            <img class="vector-icon" alt="" src="{{ asset('images/logo-pc-shop1.png') }}">
+                        </a>
                     </div>
-                    <div class="home-parent">
+                    <div class="home-parent" id="navMenu">
                         <a href="/" class="nav-link">Home</a>
                         <a href="{{ route('katalog') }}" class="nav-link">Product</a>
                         <a href="/#service" class="nav-link">Service</a>
                         <a href="/#project" class="nav-link">Project</a>
                         <a href="/#contact" class="nav-link">Contact Us</a>
                     </div>
-                    <div class="hamburger">☰</div>
+                    <div class="hamburger" id="hamburger">&#9776;</div>
                 </div>
             </div>
             <div class="frame-container">
@@ -99,14 +98,11 @@
                             </div>
                         @endforeach
                     </div>
-            </div>
             <div class="frame-parent66">
                 <div class="frame-parent67">
                     <div class="meet-us-parent">
                         <div class="vector-parent">
-                            <img class="vector-icon" alt="" src="{{ asset('images/Vector.svg') }}">
-
-                            <div class="pc-shop">PC Shop</div>
+                            <img class="vector-icon" alt="" src="{{ asset('images/logo-pc-shop1.png') }}">
                         </div>
                         <div class="contrary-to-popular-container">
                             <p class="hingga-aksesori-penting">Contrary to popular belief, Lorem Ipsum is not simply
@@ -152,67 +148,50 @@
         });
     });
 
+    document.addEventListener('DOMContentLoaded', function () {
+        const hamburger = document.getElementById('hamburger');
+        const navMenu = document.getElementById('navMenu');
+
+        let menuOpen = false;
+
+        hamburger.addEventListener('click', function () {
+            menuOpen = !menuOpen;
+
+            if (menuOpen) {
+                navMenu.classList.add('show');
+            } else {
+                navMenu.classList.remove('show');
+            }
+
+            hamburger.innerHTML = menuOpen ? '&times;' : '&#9776;';
+        });
+    });
 
 document.addEventListener("DOMContentLoaded", function () {
-const hamburger = document.querySelector(".hamburger");
-const menu = document.querySelector(".home-parent");
-
-hamburger.addEventListener("click", function () {
-    menu.classList.toggle("show-menu");
-    });
-});
-
-document.addEventListener("DOMContentLoaded", function() {
     const filterButtons = document.querySelectorAll(".filter-btn");
-    const products = document.querySelectorAll(".product-item");
+    const productWrappers = document.querySelectorAll(".rectangle-parent");
 
     filterButtons.forEach(button => {
-        button.addEventListener("click", function() {
+        button.addEventListener("click", function (e) {
+            e.preventDefault();
             const filter = this.getAttribute("data-filter");
-            console.log(`Tombol ${filter} diklik`); // Debugging
 
-            products.forEach(product => {
+            // Ganti tombol aktif
+            filterButtons.forEach(btn => btn.classList.remove("active"));
+            this.classList.add("active");
+
+            productWrappers.forEach(wrapper => {
+                const product = wrapper.querySelector(".product-item");
                 const productCategory = product.getAttribute("data-category");
-                console.log(`Produk ${productCategory} dicek`); // Debugging
 
                 if (filter === "all" || productCategory === filter) {
-                    product.classList.remove("hidden");
+                    wrapper.style.display = "flex"; // atau "block" jika bukan flex
                 } else {
-                    product.classList.add("hidden");
+                    wrapper.style.display = "none";
                 }
             });
         });
     });
 });
-
-    var homeText = document.getElementById("homeText");
-    if (homeText) {
-        homeText.addEventListener("click", function(e) {
-            // Add your code here
-        });
-    }
-
-    document.addEventListener("DOMContentLoaded", function() {
-        const filterButtons = document.querySelectorAll(".filter-btn");
-        const products = document.querySelectorAll(".product-item");
-
-        filterButtons.forEach(button => {
-            button.addEventListener("click", function() {
-                const filter = this.getAttribute("data-filter");
-
-                products.forEach(product => {
-                    const productCategory = product.getAttribute("data-category");
-
-                    if (filter === "all" || productCategory === filter) {
-                        product.style.display = ""; // Tampilkan produk yang sesuai
-                    } else {
-                        product.style.display =
-                        "none"; // Sembunyikan produk yang tidak sesuai
-                    }
-                });
-            });
-        });
-    });
 </script>
-
 </html>

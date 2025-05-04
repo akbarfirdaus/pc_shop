@@ -53,14 +53,9 @@
 }
 
 .vector-icon {
-  	width: 40px;
+  	width: 200px;
   	position: relative;
-  	height: 40px;
-}
-.pc-shop {
-  	position: relative;
-  	line-height: 40px;
-  	font-weight: 900;
+  	height: 120px;
 }
 .vector-parent {
   	display: flex;
@@ -149,29 +144,45 @@
     }
 
     .home-parent {
-        display: none;
+        visibility: hidden;
+        opacity: 0;
+        transform: translateY(-20px);
+        transition: opacity 0.4s ease, transform 0.4s ease;
         flex-direction: column;
+        background: white;
         position: absolute;
         top: 70px;
         left: 0;
         width: 100%;
-        background: white;
         padding: 10px 0;
         box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
         text-align: center;
-        z-index: 1000;
+        z-index: 999;
+        pointer-events: none;
     }
 
     .home-parent a {
+        max-height: 500px;
         padding: 10px;
-        display: block;
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .home-parent.show {
+        visibility: visible;
+        opacity: 1;
+        transform: translateY(0);
+        pointer-events: auto; /* aktifkan klik hanya saat terlihat */
     }
 
     .hamburger {
         display: block;
+        font-size: 30px;
+        cursor: pointer;
+        z-index: 100;
+        position: relative;
     }
 }
-
 .frame-container {
   	width: 100%;
     max-width: 1113px;
@@ -181,7 +192,7 @@
   	align-items: flex-start;
   	justify-content: flex-start;
   	gap: 67px;
-  	font-size: 48px;
+  	font-size: 24px;
   	color: #000;
 }
 
@@ -242,8 +253,7 @@
 
   .katalog-produk-parent {
     gap: 24px;
-    padding-left: clamp(25px, 7vw, 40px);
-    padding-right: 20px;
+    padding: 0 38px;
   }
 
   .katalog-produk {
@@ -289,7 +299,11 @@
     border: none;
     border-radius: 100px;
     cursor: pointer;
+    pointer-events: auto !important;
+    z-index: 1;
+    position: relative;
 }
+
 .button-wrapper,
 .button-hover,
 .button {
@@ -482,24 +496,23 @@
     }
 
     .frame-parent1 {
-        padding-right: 10px;
-        padding-left: 38px;
+        padding: 0 38px;
+        justify-content: flex-start;
     }
 
     .rectangle-parent {
         width: calc((100% - 87px) / 4);
+        box-sizing: border-box;
     }
 }
-
 @media (max-width: 946px) and (min-width: 768px) {
     .button-klik-parent{
         padding-left: clamp(40px, 7vw, 40px);
     }
 
     .frame-parent1 {
-        padding-right: 10px;
-        padding-left: 38px;
-        justify-content: center;
+        padding: 0 38px;
+        justify-content: flex-start;
     }
 
     .rectangle-parent {
@@ -517,9 +530,19 @@
     }
 
     .frame-parent1 {
-        justify-content: center;
-        padding-right: 10px;
-        padding-left: 38px;
+        justify-content: flex-start;
+        padding: 0 38px;
+    }
+
+    img.frame-child {
+        max-width: 100%;
+        aspect-ratio: 2 / 1;
+        object-fit: cover;
+        border-radius: 15px;
+    }
+
+    .frame-parent2 {
+        max-width: 100%;
     }
 }
 
@@ -534,11 +557,11 @@
     }
 
     .button-klik-parent::-webkit-scrollbar {
-        display: none; /* sembunyikan scrollbar di iOS/Chrome */
+        display: none;
     }
 
     .button-klik {
-        flex: 0 0 auto; /* biar tidak terpaksa menyusut */
+        flex: 0 0 auto;
     }
 
     .rectangle-parent {
@@ -547,8 +570,18 @@
 
     .frame-parent1 {
         justify-content: center;
-        padding-right: 10px;
-        padding-left: 38px;
+        gap: 20%;
+    }
+
+    img.frame-child {
+        max-width: 100%;
+        aspect-ratio: 2 / 1;
+        object-fit: cover;
+        border-radius: 15px;
+    }
+
+    .frame-parent2 {
+        max-width: 100%;
     }
 }
 
@@ -605,7 +638,7 @@
   	flex-direction: row;
   	align-items: flex-start;
   	justify-content: flex-start;
-  	padding: 0px 165px;
+  	padding: 0px clamp(37px, 2vw, 10px);
   	gap: 153px;
 }
 
@@ -630,8 +663,6 @@
     }
 
     .vector-icon, .group-icon {
-        width: 48px;
-        height: 48px;
         transition: all 0.3s ease-in-out;
     }
 
@@ -653,6 +684,7 @@
         padding: 0 40px;
         gap: 40px;
         transition: all 0.3s ease-in-out;
+        flex-wrap: wrap;
     }
 
     .frame-parent67, .frame-wrapper1 {
@@ -668,8 +700,6 @@
     }
 
     .vector-icon, .group-icon {
-        width: 40px;
-        height: 40px;
         transition: all 0.3s ease-in-out;
     }
 
@@ -697,6 +727,7 @@
   	justify-content: flex-start;
   	gap: clamp(20px, 7vw, 76px);
 }
+
 html {
     scroll-behavior: smooth;
 }
@@ -713,7 +744,7 @@ html {
     font-weight: bold;
 }
 
-a{
+a {
     text-decoration: none;
     color: inherit;
 }

@@ -25,12 +25,11 @@
         <div class="frame-parent">
             <div class="frame-group">
                 <div class="vector-parent">
-                    <img class="vector-icon" alt="" src="{{ asset('images/Vector.svg') }}">
-                    <div class="pc-shop">
-                        <a href="/">PC Shop</a>
-                    </div>
+                    <a href="/">
+                        <img class="vector-icon" alt="" src="{{ asset('images/logo-pc-shop1.png') }}">
+                    </a>
                 </div>
-                <div class="home-parent">
+                <div class="home-parent" id="navMenu">
                     <a href="/" class="nav-link {{ Request::is('/') ? 'active' : '' }}">Home</a>
                     <a href="{{ route('katalog') }}"
                         class="nav-link {{ Request::is('katalog*') ? 'active' : '' }}">Product</a>
@@ -38,7 +37,7 @@
                     <a href="#project" class="nav-link">Project</a>
                     <a href="#contact" class="nav-link">Contact Us</a>
                 </div>
-                <div class="hamburger">☰</div>
+                <div class="hamburger" id="hamburger">&#9776;</div>
             </div>
             <div class="frame-container">
                 <div class="frame-div">
@@ -57,7 +56,9 @@
                     </div>
                     <div class="frame-parent1" id="frameContainer1">
                         <div class="see-our-services-wrapper">
-                            <b class="see-our-services">See Our Services</b>
+                            <a href="#service">
+                                <b class="see-our-services">See Our Services</b>
+                            </a>
                         </div>
                         <div class="play-circle5-1-parent">
                             <img class="work-1-icon" alt="" src="{{ asset('images/add-user 1.png') }}">
@@ -292,9 +293,7 @@
                 <div class="frame-parent19">
                     <div class="contact-us-parent">
                         <div class="vector-parent">
-                            <img class="vector-icon" alt="" src="{{ asset('images/Vector.svg') }}">
-
-                            <div class="pc-shop">PC Shop</div>
+                            <img class="vector-icon" alt="" src="{{ asset('images/logo-pc-shop1.png') }}">
                         </div>
                         <div class="contrary-to-popular-container">
                             <p class="solusi-teknologi">Contrary to popular belief, Lorem Ipsum is not simply random
@@ -328,14 +327,19 @@
 </body>
 </html>
 <script>
-document.addEventListener("DOMContentLoaded", function () {
-    const hamburger = document.querySelector(".hamburger");
-    const menu = document.querySelector(".home-parent");
+document.addEventListener('DOMContentLoaded', function () {
+    const hamburger = document.getElementById('hamburger');
+    const navMenu = document.getElementById('navMenu');
 
-    hamburger.addEventListener("click", function () {
-        menu.classList.toggle("show-menu");
+    let menuOpen = false;
+
+    hamburger.addEventListener('click', function () {
+        console.log('Hamburger clicked');
+        navMenu.classList.toggle('show');
+        menuOpen = !menuOpen;
+        hamburger.innerHTML = menuOpen ? '&times;' : '&#9776;';
     });
-});
+})
 
 document.addEventListener("DOMContentLoaded", function () {
     function setupInfiniteScroll() {
@@ -438,7 +442,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function startAutoSlide() {
         if (!isMobile() || autoSlide) return; // Cegah duplikasi interval
-        autoSlide = setInterval(nextSlide, 5000); // Slide otomatis setiap 5 detik
+        autoSlide = setInterval(nextSlide, 8000); // Slide otomatis setiap 7 detik
     }
 
     function stopAutoSlide() {
@@ -453,18 +457,6 @@ document.addEventListener("DOMContentLoaded", function () {
             item.style.transition = "none"; // Hilangkan animasi saat reset
         });
     }
-
-    document.querySelector(".left-arrow").addEventListener("click", function () {
-        stopAutoSlide();
-        prevSlide();
-        startAutoSlide();
-    });
-
-    document.querySelector(".right-arrow").addEventListener("click", function () {
-        stopAutoSlide();
-        nextSlide();
-        startAutoSlide();
-    });
 
     // Mulai autoplay saat halaman dimuat (hanya jika mobile)
     if (isMobile()) {
