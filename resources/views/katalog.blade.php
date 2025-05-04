@@ -148,24 +148,39 @@
         });
     });
 
-    document.addEventListener('DOMContentLoaded', function () {
-        const hamburger = document.getElementById('hamburger');
-        const navMenu = document.getElementById('navMenu');
+document.addEventListener('DOMContentLoaded', function () {
+    const hamburger = document.getElementById('hamburger');
+    const navMenu = document.getElementById('navMenu');
+    const navLinks = document.querySelectorAll('.nav-link');
 
-        let menuOpen = false;
+    let menuOpen = false;
 
-        hamburger.addEventListener('click', function () {
-            menuOpen = !menuOpen;
+    hamburger.addEventListener('click', function () {
+        navMenu.classList.toggle('show');
+        menuOpen = !menuOpen;
+        hamburger.innerHTML = menuOpen ? '&times;' : '&#9776;';
+    });
 
-            if (menuOpen) {
-                navMenu.classList.add('show');
-            } else {
-                navMenu.classList.remove('show');
-            }
+    document.addEventListener('click', function (e) {
+        const isInsideNav = navMenu.contains(e.target);
+        const isHamburger = hamburger.contains(e.target);
+        if (!isInsideNav && !isHamburger && menuOpen) {
+            navMenu.classList.remove('show');
+            hamburger.innerHTML = '&#9776;';
+            menuOpen = false;
+        }
+    });
 
-            hamburger.innerHTML = menuOpen ? '&times;' : '&#9776;';
+    // Tutup navbar saat link diklik
+    navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            navMenu.classList.remove('show');
+            hamburger.innerHTML = '&#9776;';
+            menuOpen = false;
         });
     });
+});
+
 
 document.addEventListener("DOMContentLoaded", function () {
     const filterButtons = document.querySelectorAll(".filter-btn");

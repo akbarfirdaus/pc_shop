@@ -330,16 +330,37 @@
 document.addEventListener('DOMContentLoaded', function () {
     const hamburger = document.getElementById('hamburger');
     const navMenu = document.getElementById('navMenu');
+    const navLinks = document.querySelectorAll('.nav-link');
 
     let menuOpen = false;
 
     hamburger.addEventListener('click', function () {
-        console.log('Hamburger clicked');
         navMenu.classList.toggle('show');
         menuOpen = !menuOpen;
         hamburger.innerHTML = menuOpen ? '&times;' : '&#9776;';
     });
-})
+
+    document.addEventListener('click', function (e) {
+        const isInsideNav = navMenu.contains(e.target);
+        const isHamburger = hamburger.contains(e.target);
+        if (!isInsideNav && !isHamburger && menuOpen) {
+            navMenu.classList.remove('show');
+            hamburger.innerHTML = '&#9776;';
+            menuOpen = false;
+        }
+    });
+
+    // Tutup navbar saat link diklik
+    navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            navMenu.classList.remove('show');
+            hamburger.innerHTML = '&#9776;';
+            menuOpen = false;
+        });
+    });
+});
+
+
 
 document.addEventListener("DOMContentLoaded", function () {
     function setupInfiniteScroll() {
