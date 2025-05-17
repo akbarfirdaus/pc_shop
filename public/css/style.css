@@ -180,6 +180,8 @@ html {
 }
 .solusi-teknologi {
   	margin: 0;
+    text-align: justify;
+    padding-right: 10px;
 }
 .solusi-teknologi-tepat-container {
   	width: 597px;
@@ -445,6 +447,7 @@ html {
 
     .solusi-teknologi{
         font-weight: bold;
+        padding: 0 15px;
     }
 
     .frame-parent1 {
@@ -468,6 +471,18 @@ html {
 
     .group-div {
         display: none;
+    }
+
+    .solusi-teknologi-tepat-container
+    .solusi-teknologi {
+        font-size: clamp(20px, 7vw, 35px);
+        text-align: center;
+    }
+
+    .melayani-penjualan-dan-container
+    .solusi-teknologi {
+        font-size: clamp(13px, 3vw, 35px);
+        text-align: center;
     }
 }
 
@@ -508,6 +523,7 @@ html {
 }
 .lenovo-logosvg-parent {
     display: flex;
+    background-color: #5d50c6;
     justify-content: center;
     overflow: hidden;
     width: 100%;
@@ -515,16 +531,18 @@ html {
     padding: 0 165px; /* Pastikan padding sejajar dengan navbar */
     position: relative; /* Membantu membatasi animasi */
     box-sizing: border-box;
+    gap: 79px;
 }
 .logo-track{
     display: flex;
-    gap: 40px; /* Jarak antar logo */
+    gap: 79px; /* Jarak antar logo */
     animation: loop-scrooll 20s linear infinite;
     flex-direction: row;
 }
 .logo-track img {
     width: 170px;
     flex-shrink: 0;
+    filter: brightness(0) invert(1); /* Jadikan putih */
 }
 
 @keyframes loop-scrooll {
@@ -540,24 +558,25 @@ html {
     .lenovo-logosvg-parent {
         position: relative;
         width:100%;
-        padding: 0 80px; /* Sesuaikan padding untuk tablet */
+        padding: 0 80px;
+        height: 25vw;
     }
     .logo-track {
         gap: 30px;
-        animation: loop-scrooll 15s linear infinite; /* Percepat animasi */
+        animation: loop-scrooll 15s linear infinite;
     }
     .logo-track img {
-        width: 140px; /* Kecilkan logo */
+        width: 140px;
     }
 }
 
 @media (max-width: 768px) {
     .lenovo-logosvg-parent {
-        padding: 0 40px; /* Sesuaikan padding untuk mobile */
+        padding: 0 40px;
     }
     .logo-track {
         gap: 20px;
-        animation: loop-scrooll 12s linear infinite;
+        animation: loop-scrooll 18s linear infinite;
     }
     .logo-track img {
         width: 120px;
@@ -570,7 +589,7 @@ html {
     }
     .logo-track {
         gap: 10px;
-        animation: loop-scrooll 10s linear infinite;
+        animation: loop-scrooll 15s linear infinite;
         padding: 10px 0;
     }
     .logo-track img {
@@ -624,8 +643,9 @@ html {
   	gap: 32px;
 }
 .destination-1-parent {
+    flex: 1 1 48%;
+    max-width: 48%; /* Agar ada dua kolom */
   	align-self: stretch;
-  	width: 350px;
   	box-shadow: 0px 41px 89px rgba(0, 0, 0, 0.1), 0px 0px 0px rgba(0, 0, 0, 0.1);
   	border-radius: 32px;
   	background-color: #fff;
@@ -636,7 +656,6 @@ html {
   	padding: 64px;
   	box-sizing: border-box;
   	gap: 16px;
-    width: 48%; /* Agar ada dua kolom */
 }
 .frame-parent4 {
   	align-self: stretch;
@@ -655,30 +674,20 @@ html {
     margin: 0 auto;
 }
 .frame-parent3 {
-  	width: 1092px;
+  	width: 100%;
+    max-width: 1092px;
+    padding: 0 20px;
+    margin: 0 auto;
   	display: flex;
   	flex-direction: column;
   	align-items: flex-start;
   	justify-content: flex-start;
   	gap: 79px;
+    box-sizing: border-box;
 }
-
-.arrow {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background: rgba(0, 0, 0, 0.5);
-    color: white;
-    border: none;
-    padding: 10px 15px;
-    cursor: pointer;
-    font-size: 18px;
-    z-index: 10;
+.dot-indicators {
     display: none;
 }
-
-.left-arrow { left: 10px; }
-.right-arrow { right: 10px; }
 
 @media (max-width: 1152px) and (min-width: 580px) {
     .frame-parent3 {
@@ -699,45 +708,53 @@ html {
         font-size: clamp(18px, 7vw, 30px); /* Perkecil ukuran teks di tablet & mobile */
     }
     .frame-parent4 {
-        width: clamp(500px, 85vw, 800px); /* Buat lebih kecil dari desktop */
-        max-width: 700px;
-        flex-wrap: wrap;
-        display: flex;
-        justify-content: space-between; /* Jaga elemen tetap di row */
+        flex-direction: column; /* Stack vertikal */
+        align-items: center;
+        width: 100%;
+        padding: 0 16px;
         gap: 20px; /* Kurangi jarak antar elemen */
         padding: 0 20px; /* Tambahkan padding kiri & kanan */
         margin: 0 auto; /* Pusatkan elemen */
     }
 
     .destination-1-parent {
-        flex: 1;
-        flex-basis: 48%; /* Biar dua card sejajar di atas */
-        max-width: 48%; /* Hindari terlalu lebar */
-        min-width: 200px;
-        padding: 10px;
+        flex-direction: row; /* Logo dan teks sejajar horizontal */
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        max-width: 90vw;
+        padding: 20px;
+        box-sizing: border-box;
+        gap: 16px;
+        border: 1px solid #ccc;
+        border-radius: 12px;
+        align-items: flex-start;
+        text-align: justify;
     }
 
-    .destination-1-parent:nth-child(3) {
-        flex-basis: 100%;
-        max-width: 100%;
+    .destination-1-icon {
+        width: 80px;
+        height: auto;
+        flex-shrink: 0;
     }
 
     .destination-1-icon
     .destination-1-icon:nth-child(3){
-        width: 20%; /* Kecilkan gambar */
+        width: 80px;
         height: auto;
+        flex-shrink: 0;
     }
 
     .pembuatan-aplikasi-web-mobil-parent {
-        font-size: 14px; /* Kecilkan teks agar muat */
+        font-size: 18px;
+        display: block;
+        margin-bottom: 8px;
     }
 
     .kami-membantu-anda{
-        font-size: 14px
-    }
-
-    .arrow {
-        display: none; /* Sembunyikan tombol di tablet & desktop */
+        font-size: 14px;
+        line-height: 1.5;
     }
 }
 
@@ -780,26 +797,25 @@ html {
         transition: transform 0.5s ease-in-out;
     }
 
-    .arrow {
-        position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
-        background: rgba(0, 0, 0, 0.5);
-        color: white;
-        border: none;
-        padding: 10px;
-        cursor: pointer;
-        font-size: 24px;
-        z-index: 100;
-        display: none;
+    .dot-indicators {
+        display: flex;
+        justify-content: center;
+        margin-top: 16px;
+        gap: 6px;
     }
 
-    .left-arrow {
-        left: 10px;
+    .dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background-color: #ccc;
+        transition: background-color 0.3s, width 0.3s;
     }
 
-    .right-arrow {
-        right: 10px;
+    .dot.active {
+        width: 24px;
+        background-color: #5d50c6;
+        border-radius: 5px;
     }
 }
 
@@ -893,6 +909,7 @@ html {
   	width: 350px;
   	position: relative;
   	border-radius: 32px 32px 0px 0px;
+    border: 1px solid black;
   	height: 350px;
   	object-fit: cover;
 }
@@ -968,9 +985,9 @@ html {
         justify-content: center;
     }
 
-    .arrow-left-1-icon,
-    .arrow-left-2-icon {
-        width: 30px; /* Perkecil ukuran panah */
+    .group-child .arrow-left-1-icon,
+    .group-item .arrow-left-2-icon {
+        width: 30px;
         height: auto;
     }
 
@@ -981,52 +998,47 @@ html {
     }
 
     .frame-parent5 {
-        padding: 15px; /* Kurangi padding agar lebih pas */
+        padding: 15px;
     }
 
     .project-track {
-        gap: 20px; /* Kurangi jarak antar elemen */
+        gap: 20px;
     }
 
     .vector-group {
-        flex: 0 0 250px; /* Perkecil ukuran kartu */
-    }
-
-    .arrow-left-1-icon,
-    .arrow-left-2-icon {
-        width: 30px; /* Perkecil ukuran tombol panah */
-        height: auto;
+        flex: 0 0 250px;
     }
 }
 
 @media (max-width: 767px) {
     .frame-parent6 {
         width: 100%;
-        padding: 32px 20px; /* Beri ruang agar tidak mepet ke tepi */
-        text-align: center; /* Agar konten berada di tengah */
+        padding: 32px 20px;
+        text-align: center;
     }
 
     .our-project-parent {
         display: flex;
         flex-direction: column;
-        align-items: center; /* Memastikan teks di tengah */
+        align-items: center;
         justify-content: center;
         padding: 0 20px;
     }
 
     .projects-that-inspire {
-        font-size: clamp(12px, 5vw, 20px); /* Lebih kecil untuk mobile */
+        font-size: clamp(12px, 5vw, 20px);
         text-align: center;
     }
 
     .project-navigation {
         position: absolute;
+        top: 50%;
         left: 0;
         right: 0;
         display: flex;
         justify-content: space-between;
         width: 95%;
-        padding: 0 15px; /* 🔹 Tambahkan sedikit padding biar nggak nempel ke tepi */
+        padding: 0 15px;
         z-index: 10;
     }
 
@@ -1039,41 +1051,44 @@ html {
         justify-content: center;
         border-radius: 50%;
         transition: transform 0.2s ease-in-out;
+        background: none !important;
+        border: none !important;
+        box-shadow: none !important;
     }
 
     .project-navigation .group-child,
     .project-navigation .group-item {
         width: 13vw;
         height: 13vw;
-        display: flex; /* ✅ Agar anak-anaknya tetap di tengah */
+        display: flex;
         align-items: center;
         justify-content: center;
-        position: relative; /* 🔹 Pastikan tetap dalam parent */
+        position: relative;
+        background: none !important;
+        border: none !important;
+        box-shadow: none !important;
     }
 
     .project-navigation .rectangle-group img,
     .project-navigation .rectangle-container img {
         width: 20px;
         height: 20px;
-        position: absolute; /* ✅ Pusatkan di dalam parent */
+        position: absolute;
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
     }
 
-    .project-navigation .rectangle-group img {
-        filter: invert(0); /* Tetap hitam */
-    }
-
+    .project-navigation .rectangle-group img,
     .project-navigation .rectangle-container img {
-        color: #fff;
+        filter: brightness(0) saturate(100%) invert(0);
     }
 
-    /* 🌟 Hover Effect */
+
     .project-navigation .rectangle-group:hover,
     .project-navigation .rectangle-container:hover {
-        transform: scale(1.1); /* Membesar sedikit */
-        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); /* Efek timbul */
+        transform: scale(1.1);
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
     }
 
     .project-track {
@@ -1095,7 +1110,7 @@ html {
         transition: transform 0.5s ease-in-out;
     }
 
-    /* Ukuran teks dalam card lebih kecil */
+
     .vector-group b,
     .vector-group p {
         font-size: 14px;
@@ -1108,23 +1123,23 @@ html {
     }
 
     .close {
-        font-size: 20px; /* 🔹 Kecilkan tombol close */
+        font-size: 20px;
         top: 5px;
         right: 10px;
     }
 
     #modalThumbnail {
-        max-height: 200px; /* 🔹 Batasi tinggi gambar agar tidak memenuhi layar */
-        object-fit: cover; /* 🔹 Pastikan gambar tetap rapi */
+        max-height: 200px;
+        object-fit: cover;
     }
 
     #modalTitle {
-        font-size: 18px; /* 🔹 Ukuran judul lebih kecil */
+        font-size: 18px;
         margin-top: 10px;
     }
 
     #modalMitra {
-        font-size: 14px; /* 🔹 Ukuran teks mitra lebih kecil */
+        font-size: 14px;
     }
 }
 
@@ -1138,7 +1153,7 @@ html {
   	display: flex;
   	flex-direction: column;
   	align-items: center;
-    flex: 0 0 350px; /* Ukuran tetap untuk setiap card */
+    flex: 0 0 350px;
 }
 .frame-parent5 {
   	align-self: stretch;
@@ -1150,22 +1165,22 @@ html {
   	align-content: center;
   	gap: 0px 31px;
   	color: #191825;
-    overflow: hidden; /* Mencegah elemen keluar dari layar */
-    padding: 20px; /* Memberikan ruang agar animasi tidak melebihi batas */
+    overflow: hidden;
+    padding: 20px;
 }
 .project-track {
     display: flex;
-    gap: 40px; /* Jarak antar logo */
+    gap: 40px;
     width: max-content;
     transition: transform 1s ease-in-out;
-    padding-left: 60px; /* Padding agar animasi tidak mulai dari ujung kiri */
+    padding-left: 60px;
     padding-right: 60px;
     white-space: nowrap;
-    position: relative; /* Tambahkan untuk memastikan posisi tidak berubah */
+    position: relative;
 }
 
 .clone{
-    position: relative; /* Pastikan clone tetap dalam track */
+    position: relative;
 }
 
 @keyframes loop-scrooll {
@@ -1177,34 +1192,34 @@ html {
     }
 }
 
-/* Style untuk modal popup */
+
 .modal {
-    display: none; /* Sembunyikan modal awalnya */
+    display: none;
     position: fixed;
-    z-index: 1000; /* Pastikan modal di atas semua elemen */
+    z-index: 1000;
     left: 0;
     top: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.5); /* Latar belakang transparan */
+    background-color: rgba(0, 0, 0, 0.5);
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-/* Style untuk isi modal */
+
 .modal-content {
     background: #fff;
     padding: 20px;
     border-radius: 10px;
     width: 90%;
-    max-width: 500px; /* Batas ukuran modal */
+    max-width: 500px;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
     text-align: center;
     position: relative;
 }
 
-/* Tombol close (X) */
+
 .close {
     position: absolute;
     top: 10px;
@@ -1213,7 +1228,7 @@ html {
     cursor: pointer;
 }
 
-/* Style untuk gambar di modal */
+
 #modalThumbnail {
     width: 100%;
     height: auto;
@@ -1317,18 +1332,18 @@ html {
     padding-left: 0 auto;
 }
 .group-container, .group-parent1 {
-    width: 38vw; /* 544px -> sekitar 28% dari viewport width */
-    border-radius: 1.6vw; /* 32px -> sekitar 1.6% dari viewport width */
+    width: 38vw;
+    border-radius: 1.6vw;
     background-color: #fff;
-    border: 0.05vw solid rgba(25, 24, 37, 0.1); /* 1px -> sekitar 0.05vw */
+    border: 0.05vw solid rgba(25, 24, 37, 0.1);
     box-sizing: border-box;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: flex-start;
-    padding: 1.6vw; /* 32px -> sekitar 1.6% dari viewport width */
-    gap: 2vw; /* 32px -> sekitar 1.6% dari viewport width */
-    font-size: 0.94vw; /* 18px -> sekitar 0.94% dari viewport width */
+    padding: 1.6vw;
+    gap: 2vw;
+    font-size: 0.94vw;
 }
 .rectangle-div {
   	position: absolute;
@@ -1412,9 +1427,16 @@ html {
 }
 
 @media (max-width: 1152px) and (min-width: 768px) {
+    .group-inner, .rectangle-div, .group-child1,
+    .background-svg, .group-child2, .group-child3,
+    .background-icon {
+        display: none;
+    }
+
     .background-parent {
         width: 80vw;
         padding: 2vw;
+        height: clamp(850px, 110vw, 1200px);
     }
 
     .frame-parent13 {
@@ -1428,56 +1450,56 @@ html {
 
     .what-benifit-will {
         font-size: 4vw;
-        max-width: 70%;
+        max-width: 100%;
     }
 
-    .group-inner, .rectangle-div, .group-child1 {
-        display: none;
+    .frame-parent15 {
+        display: flex;
+        align-items: flex-start;
+        justify-content: flex-start;
+        width: 80vw;
+        margin: 0 auto;
     }
 
-   .group-child2 {
-        position: absolute;
-        top: 45%;
-        right: 5vw;
-        transform: translateY(-50%);
-        border-radius: clamp(50px, 26vw, 300px);
-        width: clamp(230px, 25vw, 530px);
-        height: clamp(450px, 45vw, 600px);
-        object-fit: cover;
-        z-index: 1;
+    .group-container, .group-parent1 {
+        width: 100%;
     }
 
-  .group-child3 {
-        position: absolute;
-        top: 60%;
-        right: 2vw;
-        transform: translateY(-50%);
-        border-radius: clamp(50px, 26vw, 300px);
-        width: clamp(190px, 20vw, 400px);
-        height: clamp(300px, 34vw, 500px);
-        object-fit: cover;
-        z-index: 1;
+    .custom-solutions-parent {
+        margin: 0 auto;
     }
 
-    .background-svg {
-        position: absolute;
-        top: -5%;
-        left: 65%;
-        transform: translate(-20%, 2%);
-        width: clamp(230px, 25vw, 530px);
-        height: clamp(480px, 20vw, 650px);
-        z-index: 1;
+    .custom-solutions {
+        font-size: clamp(10px, 4vw, 27px);
+        font-weight: bold;
     }
 
-  .background-icon {
-        position: absolute;
-        top: 9%;
-        left: clamp(180px, 65vw, 700px);
-        transform: translate(-50%, 2%);
-        width: clamp(250px, 30vw, 530px);
-        height: clamp(480px, 20vw, 650px);
-        z-index: 0;
+    .solusi-teknologi-tepat-container
+    .solusi-teknologi {
+        margin-right: 30%;
+        text-align: left;
     }
+
+    .melayani-penjualan-dan-container {
+        font-size: clamp(13px, 3vw, 35px);
+        padding-right: 10%;
+        margin-top: -20px;
+    }
+
+    .rectangle-group, .custom-solutions-parent,
+    .melayani-penjualan-dan-container, .solusi-teknologi {
+        text-align: justify;
+    }
+
+    .rectangle-group {
+        flex-shrink: 0;
+    }
+
+    .rectangle-group img {
+        width: 60%;
+        height: 50%;
+    }
+
 }
 
 @media (max-width: 767px){
@@ -1515,14 +1537,14 @@ html {
 
     .frame-parent15 {
         display: flex;
-        align-items: center;
-        justify-content: center;
+        align-items: flex-start;
+        justify-content: flex-start;
         width: 90vw;
         margin: 0 auto;
     }
 
     .group-container, .group-parent1 {
-        width: 90%;
+        width: 100%;
     }
 
     .custom-solutions-parent {
@@ -1534,22 +1556,19 @@ html {
         font-weight: bold;
     }
 
-    .solusi-teknologi-tepat-container
-    .solusi-teknologi {
-        font-size: clamp(20px, 7vw, 35px);
-    }
-
-    .melayani-penjualan-dan-container
-    .solusi-teknologi {
-        font-size: clamp(13px, 3vw, 35px);
-    }
-
-    .icon-check {
-        width: 80%;
-    }
-
-    .rectangle-group{
+    .rectangle-group {
         flex-shrink: 0;
+    }
+
+    .rectangle-group img {
+        width: 60%;
+        height: 50%;
+    }
+
+    .solusi-teknologi2 {
+        text-align: justify;
+        padding-right: 10px;
+        margin-top: 0px;
     }
 
     .group-inner, .rectangle-div, .group-child1 {
@@ -1617,7 +1636,7 @@ html {
 .frame-parent16 {
   	align-self: stretch;
   	border-radius: 32px;
-  	background-color: rgba(250, 205, 73, 0.08);
+  	background-color: #FACD4980;
   	display: flex;
   	flex-direction: column;
   	align-items: center;
@@ -1726,21 +1745,21 @@ html {
 
 @media (max-width: 767px) {
     .frame-parent16 {
-        position: relative; /* biar tetap dalam alur layout */
+        position: relative;
         padding: clamp(20px, 5vw, 96px) 12px;
-        margin-top: clamp(20px, 2vh, 64px); /* atur jarak dari atas */
+        margin-top: clamp(20px, 2vh, 64px);
     }
 
     .contact-us1,
     .reach-out-to {
         width: 100%;
         font-size: clamp(16px, 5vw, 28px);
-        text-align: center; /* opsional agar lebih rapi di mobile */
+        text-align: center;
     }
 
     .frame-parent17 {
         display: flex;
-        flex-direction: row; /* stack ke bawah */
+        flex-direction: column;
         width: 100%;
         gap: 16px;
         margin-top: 24px;
@@ -1748,7 +1767,7 @@ html {
     }
 
     .message-1-parent {
-        width: 100%;
+        width: 94%;
         display: flex;
         align-items: center;
         gap: 12px;
@@ -1776,7 +1795,7 @@ html {
         display: inline-flex;
         justify-content: center;
         align-items: center;
-        padding: 11px; /* sedikit padding biar nggak terlalu nempel */
+        padding: 11px;
         width: auto;
         height: auto;
     }
@@ -1819,7 +1838,7 @@ html {
 @media (max-width: 767px) {
     .frame-parent18 {
         justify-content: flex-start;
-        position: relative; /* biar tetap dalam alur layout */
+        position: relative;
         padding: clamp(40px, 5vw, 96px) 20px;
         flex-wrap: wrap;
         gap: 64px;
@@ -1828,6 +1847,12 @@ html {
     .frame-parent19 {
         gap: clamp(20px, 3vw, 50px);
         font-size: 80%;
+        align-items: flex-start;
+    }
+
+    .vector-icon{
+        width: clamp(100px, 30vw, 150px);
+        height: clamp(80px, 15vw, 200px);
     }
 
     .contrary-to-popular-container {
@@ -1836,6 +1861,16 @@ html {
 
     .frame-wrapper3 {
         font-size: clamp(10px, 5vw, 20px);
+    }
+
+    .contact-us-parent {
+        align-items: flex-start;
+    }
+
+    .frame-wrapper3 .contact-us-parent,
+    .custom-solutions-parent {
+        align-items: flex-start;
+        margin: 0;
     }
 }
 
@@ -1847,7 +1882,7 @@ body {
 }
 
 section {
-    scroll-margin-top: 80px; /* Sesuaikan dengan tinggi navbar */
+    scroll-margin-top: 80px;
 }
 
 a {
@@ -1855,14 +1890,14 @@ a {
     color: inherit;
 }
 
-/* Untuk Tablet (Lebar Maksimal 1024px) */
+
 @media (max-width: 1024px) {
     .landing-page-child {
-        width: 90%; /* Kurangi lebar agar lebih fit di layar kecil */
+        width: 90%;
     }
 }
 
-/* Untuk Mobile (Lebar Maksimal 768px) */
+
 @media (max-width: 768px) {
     .landing-page-child {
         width: 80%;

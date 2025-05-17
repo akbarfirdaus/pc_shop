@@ -47,12 +47,10 @@
 
                     </div>
                     <div class="solusi-teknologi-tepat-container">
-                        <p class="solusi-teknologi">Solusi Teknologi,</p>
-                        <p class="solusi-teknologi">Tepat dan Terpercaya</p>
+                        <p class="solusi-teknologi">Solusi Teknologi Tepat dan Terpercaya</p>
                     </div>
                     <div class="melayani-penjualan-dan-container">
-                        <p class="solusi-teknologi">“Melayani penjualan dan perbaikan laptop, </p>
-                        <p class="solusi-teknologi">komputer, serta printer dengan sepenuh hati."</p>
+                        <p class="solusi-teknologi">“Melayani penjualan dan perbaikan laptop, komputer, serta printer dengan sepenuh hati."</p>
                     </div>
                     <div class="frame-parent1" id="frameContainer1">
                         <div class="see-our-services-wrapper">
@@ -115,7 +113,8 @@
                             </div>
                         </div>
                         <div class="destination-1-parent">
-                            <img class="destination-1-icon" alt="" src="{{ asset('images/cloudy 1.png') }}">
+                            <img class="destination-1-icon"
+                                alt="" src="{{ asset('images/cloudy 1.png') }}">
 
                             <div class="pembuatan-aplikasi-web-mobil-parent">
                                 <b class="pembuatan-aplikasi-web">Instalasi Infrastruktur IT</b>
@@ -135,8 +134,11 @@
                                     hingga implementasi.</div>
                             </div>
                         </div>
-                        <button class="arrow left-arrow">&#10094;</button>
-                        <button class="arrow right-arrow">&#10095;</button>
+                    </div>
+                    <div class="dot-indicators">
+                        <span class="dot active"></span>
+                        <span class="dot"></span>
+                        <span class="dot"></span>
                     </div>
                 </div>
             </section>
@@ -234,7 +236,7 @@
                             <div class="custom-solutions-parent">
                                 <b class="custom-solutions">Custom Solutions</b>
                                 <div class="melayani-penjualan-dan-container">
-                                    <p class="solusi-teknologi">Every project is tailored to meet the specific needs of your business. </p>
+                                    <p class="solusi-teknologi2">Every project is tailored to meet the specific needs of your business. </p>
                                 </div>
                             </div>
                         </div>
@@ -248,7 +250,7 @@
                             <div class="custom-solutions-parent">
                                 <b class="custom-solutions">High-Quality Results</b>
                                 <div class="melayani-penjualan-dan-container">
-                                    <p class="solusi-teknologi">Delivering high-quality outcomes aligned with the latest industry standards.</p>
+                                    <p class="solusi-teknologi2">Delivering high-quality outcomes aligned with the latest industry standards.</p>
                                 </div>
                             </div>
                         </div>
@@ -260,7 +262,7 @@
                             <div class="custom-solutions-parent">
                                 <b class="custom-solutions">Cost-Effective Services</b>
                                 <div class="melayani-penjualan-dan-container">
-                                    <p class="solusi-teknologi">Affordable solutions without compromising quality. </p>
+                                    <p class="solusi-teknologi2">Affordable solutions without compromising quality. </p>
                                 </div>
                             </div>
                         </div>
@@ -297,8 +299,7 @@
                         </div>
                         <div class="contrary-to-popular-container">
                             <p class="solusi-teknologi">Contrary to popular belief, Lorem Ipsum is not simply random
-                                text. It has roots</p>
-                            <p class="solusi-teknologi">in a piece of classical Latin literature from 45 BC.</p>
+                                text. It has roots in a piece of classical Latin literature from 45 BC.</p>
                         </div>
                     </div>
                     <div class="group-parent">
@@ -403,7 +404,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function startScrolling() {
         let track = document.querySelector(".logo-track");
-        let scrollSpeed = window.innerWidth < 767 ? 1.5 : 1; // Percepat di layar kecil
+        let scrollSpeed = window.innerWidth < 767 ? 0.2 : 0.5; // Percepat di layar kecil
         let scrollPosition = 0;
 
         function scrollLogos() {
@@ -428,26 +429,35 @@ document.addEventListener("DOMContentLoaded", function () {
     window.addEventListener("resize", setupInfiniteScroll);
 });
 
-//animasi untuk service
+// Animasi untuk service dengan dot indicator
 document.addEventListener("DOMContentLoaded", function () {
     let currentIndex = 0;
     const items = document.querySelectorAll(".destination-1-parent");
     const totalItems = items.length;
-    let autoSlide = null; // Pastikan hanya satu interval aktif
+    const dots = document.querySelectorAll(".dot");
+    let autoSlide = null;
 
-    // Cek apakah layar dalam mode mobile (max-width: 767px)
     function isMobile() {
         return window.matchMedia("(max-width: 579px)").matches;
     }
 
     function updateSlide() {
-        if (!isMobile()) return; // Stop jika bukan tampilan mobile
+        if (!isMobile()) return;
         const offset = -currentIndex * 100;
         items.forEach(item => {
             item.style.transform = `translateX(${offset}%)`;
-            item.style.transition = "transform 0.5s ease-in-out"; // Animasi smooth
+            item.style.transition = "transform 0.5s ease-in-out";
+        });
+        updateDots();
+    }
+
+    function updateDots() {
+        if (!isMobile()) return;
+        dots.forEach((dot, index) => {
+            dot.classList.toggle("active", index === currentIndex);
         });
     }
+
 
     function nextSlide() {
         if (!isMobile()) return;
@@ -462,38 +472,43 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     function startAutoSlide() {
-        if (!isMobile() || autoSlide) return; // Cegah duplikasi interval
-        autoSlide = setInterval(nextSlide, 8000); // Slide otomatis setiap 7 detik
+        if (!isMobile() || autoSlide) return;
+        autoSlide = setInterval(nextSlide, 5000);
     }
 
     function stopAutoSlide() {
-        clearInterval(autoSlide);
-        autoSlide = null; // Pastikan interval benar-benar berhenti
+        if (autoSlide) {
+            clearInterval(autoSlide);
+            autoSlide = null;
+        }
     }
 
-    function resetPosition() {
-        currentIndex = 0;
-        items.forEach(item => {
-            item.style.transform = `translateX(0%)`;
-            item.style.transition = "none"; // Hilangkan animasi saat reset
+    // OPTIONAL: klik titik manual (dot navigation)
+    dots.forEach((dot, index) => {
+        dot.addEventListener("click", () => {
+            if (!isMobile()) return;
+            currentIndex = index;
+            updateSlide();
+            stopAutoSlide();
+            startAutoSlide(); // reset timer
         });
-    }
+    });
 
-    // Mulai autoplay saat halaman dimuat (hanya jika mobile)
-    if (isMobile()) {
-        startAutoSlide();
-    }
+    // Setup awal
+    updateSlide();
+    startAutoSlide();
 
-    // Periksa ukuran layar saat diresize
-    window.addEventListener("resize", function () {
+    // Reaktif saat resize
+    window.addEventListener("resize", () => {
         if (!isMobile()) {
-            stopAutoSlide(); // Stop animasi jika keluar dari mode mobile
-            resetPosition(); // Kembalikan ke slide pertama
+            dots.forEach(dot => dot.classList.remove("active"));
         } else {
-            startAutoSlide(); // Mulai lagi jika kembali ke mode mobile
+            updateSlide();
         }
     });
+
 });
+
 
 //animasi untuk daftar project
 document.addEventListener("DOMContentLoaded", function () {

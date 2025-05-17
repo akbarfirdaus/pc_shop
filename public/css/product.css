@@ -193,6 +193,11 @@
         z-index: 100;
         position: relative;
     }
+
+    .vector-icon{
+        width: clamp(100px, 30vw, 150px);
+        height: clamp(80px, 15vw, 200px);
+    }
 }
 
 .frame-child {
@@ -318,6 +323,30 @@
   	color: #fff;
 }
 
+.thumbnail-gallery {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.thumbnail-img {
+    width: clamp(107px, 6.6vw, 107px);
+    height: clamp(107px, 6.6vw, 107px);
+    object-fit: cover;
+    cursor: pointer;
+    border-radius: 6px;
+    border: 2px solid transparent;
+    transition: border-color 0.3s;
+}
+
+.thumbnail-img:hover,
+.thumbnail-img.active {
+    border-color: #6C2BD9; /* ungu saat aktif/hover */
+}
+
+
 @media (min-width: 769px) and (max-width: 1220px) {
     .frame-group {
         top: 20%;
@@ -364,6 +393,11 @@
 
     .frame-wrapper {
         flex-direction: column;
+    }
+
+    .thumbnail-img {
+        width: clamp(120px, 10.5vw, 185px);
+        height: clamp(120px, 10.5vw, 185px);
     }
 }
 

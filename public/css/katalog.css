@@ -551,9 +551,8 @@
     .button-klik-parent{
         flex-wrap: nowrap;
         overflow-x: auto;
-        -webkit-overflow-scrolling: touch;
         gap: 12px;
-        padding: 10px 20px;
+        padding: 10px 30px;
         scroll-behavior: smooth;
     }
 
@@ -681,7 +680,6 @@
 
 @media (max-width: 767px) {
     .frame-parent66 {
-        flex-direction: column;
         align-items: flex-start;
         padding: 0 40px;
         gap: 40px;
@@ -703,6 +701,11 @@
 
     .vector-icon, .group-icon {
         transition: all 0.3s ease-in-out;
+    }
+
+    .vector-icon{
+        width: clamp(100px, 30vw, 150px);
+        height: clamp(80px, 15vw, 200px);
     }
 
     .meet-us, .pc-shop, .div {

@@ -38,8 +38,15 @@
         </div>
         <div class="frame-group">
             <div class="rectangle-parent">
-                <img class="frame-child" alt="" src="{{ asset('storage/' . $produk->thumbnail) }}">
+                <img id="mainImage" class="frame-child" alt="" src="{{ asset('storage/' . $produk->thumbnail) }}">
 
+                <!-- Galeri thumbnail gambar dummy -->
+                <div class="thumbnail-gallery">
+                    <img src="{{ asset('storage/' . $produk->thumbnail) }}" class="thumbnail-img active" onclick="changeMainImage(this)">
+                    <img src="{{ asset('images/rectangle 1.png') }}" class="thumbnail-img" onclick="changeMainImage(this)">
+                    <img src="{{ asset('images/rectangle 2.png') }}" class="thumbnail-img" onclick="changeMainImage(this)">
+                    <img src="{{ asset('images/rectangle 3.png') }}" class="thumbnail-img" onclick="changeMainImage(this)">
+                </div>
                 <div class="button-klik" onclick="kirimPesan()">
                     <div class="button-hover">
                         <div class="button-wrapper">
@@ -47,6 +54,7 @@
                         </div>
                     </div>
                 </div>
+
             </div>
             <div class="laptop-axioo-hype-5-amd-x6-r-parent">
                 <b class="laptop-axioo-hype">{{ $produk->name }}</b>
@@ -64,10 +72,6 @@
             </div>
         </div>
     </div>
-
-
-
-
 </body>
 <script>
 document.addEventListener('DOMContentLoaded', function () {
@@ -105,59 +109,47 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 
-document.addEventListener("DOMContentLoaded", function () {
-    const hamburger = document.querySelector(".hamburger");
-    const menu = document.querySelector(".home-parent");
+    document.addEventListener("DOMContentLoaded", function () {
+        const hamburger = document.querySelector(".hamburger");
+        const menu = document.querySelector(".home-parent");
 
-    hamburger.addEventListener("click", function () {
-    menu.classList.toggle("show-menu");
-    });
-});
-
-        document.addEventListener("DOMContentLoaded", function() {
-            const filterButtons = document.querySelectorAll(".filter-btn");
-            const products = document.querySelectorAll(".product-item");
-
-            filterButtons.forEach(button => {
-                button.addEventListener("click", function() {
-                    const filter = this.getAttribute("data-filter");
-                    console.log(`Tombol ${filter} diklik`); // Debugging
-
-                    products.forEach(product => {
-                        const productCategory = product.getAttribute("data-category");
-                        console.log(`Produk ${productCategory} dicek`); // Debugging
-
-                        if (filter === "all" || productCategory === filter) {
-                            product.classList.remove("hidden");
-                        } else {
-                            product.classList.add("hidden");
-                        }
-                    });
-                });
-            });
+        hamburger.addEventListener("click", function () {
+        menu.classList.toggle("show-menu");
         });
+    });
 
-        var homeText = document.getElementById("homeText");
-        if (homeText) {
-            homeText.addEventListener("click", function(e) {
-                // Add your code here
-            });
-        }
+    var homeText = document.getElementById("homeText");
+    if (homeText) {
+        homeText.addEventListener("click", function(e) {
+            // Add your code here
+        });
+    }
 
-        function kirimPesan() {
-            let produkNama = "{{ $produk->name }}";
-            let harga = "{{ $produk->harga }}";
+    function kirimPesan() {
+        let produkNama = "{{ $produk->name }}";
+        let harga = "{{ $produk->harga }}";
 
-            // Tambahkan pemisah ribuan pada harga
-            let hargaFormatted = new Intl.NumberFormat('id-ID').format(harga);
+        // Tambahkan pemisah ribuan pada harga
+        let hargaFormatted = new Intl.NumberFormat('id-ID').format(harga);
 
-            // Format pesan dengan enter (newline)
-            let pesan = `Hai Min, Mau Nanya Produk dong!!!\n\nNama Produk: ${produkNama}\nHarga: Rp ${hargaFormatted}`;
+        // Format pesan dengan enter (newline)
+        let pesan = `Hai Min, Mau Nanya Produk dong!!!\n\nNama Produk: ${produkNama}\nHarga: Rp ${hargaFormatted}`;
 
-            // Encode pesan agar URL tidak error
-            let url = `https://web.whatsapp.com/send?phone=6282383974449&text=${encodeURIComponent(pesan)}`;
+        // Encode pesan agar URL tidak error
+        let url = `https://web.whatsapp.com/send?phone=6282383974449&text=${encodeURIComponent(pesan)}`;
 
-            window.open(url, '_blank'); // Buka di tab baru
-        }
+        window.open(url, '_blank'); // Buka di tab baru
+    }
+
+    function changeMainImage(element) {
+        const mainImage = document.getElementById("mainImage");
+        mainImage.src = element.src;
+
+        // Tambahkan efek aktif
+        document.querySelectorAll('.thumbnail-img').forEach(img => {
+            img.classList.remove('active');
+        });
+        element.classList.add('active');
+    }
     </script>
 </html>
